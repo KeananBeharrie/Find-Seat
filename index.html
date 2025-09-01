@@ -1,0 +1,4453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verona & Dylan Wedding</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Removed confetti.browser.min.js script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        /* Define CSS Variables for easy theme management */
+        :root {
+            --primary-color: #3b4d61; /* Dark Blue Gray */
+            --secondary-color: #e0eafc; /* Light Blue */
+            --accent-color: #cfdef3; /* Lighter Blue */
+            --text-color: #2c3e50; /* Darker Text */
+            --white: #ffffff;
+            --gold: #d4af37; /* Gold for accents */
+            --light-gray: #f8f9fa; /* Very Light Gray */
+            --border-color: #e1e5e9; /* Light Border Color */
+            --shadow-light: 0 2px 15px rgba(59, 77, 97, 0.08);
+            --shadow-medium: 0 5px 25px rgba(59, 77, 97, 0.12);
+            --shadow-heavy: 0 10px 40px rgba(59, 77, 97, 0.15);
+            --hint-color: #FFD700; /* Gold for hints */
+        }
+
+        /* Global Box-sizing and Font Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fafdff 0%, #ffffff 100%);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hide {
+            opacity: 0;
+            pointer-events: none; /* Prevents interaction when hidden */
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--accent-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Cover Page Styling */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%);
+            overflow: hidden;
+        }
+
+        .cover-page-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15; /* Make it subtle */
+            z-index: 1; /* Ensure it's behind content but above background color */
+        }
+
+        .cover-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .cover-logo {
+            width: 250px;
+            height: 250px;
+            background: var(--white);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--primary-color);
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            /* Removed animation: float 3s ease-in-out infinite; */
+        }
+
+        .cover-logo::before {
+            content: '';
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            /* Removed animation: pulse 2s infinite; */
+        }
+
+        .cover-logo h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--primary-color);
+        }
+
+        .cover-names {
+            margin-bottom: 2rem;
+        }
+
+        .cover-names h2 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cover-date {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .cover-ornament {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 2rem auto;
+        }
+
+        .enter-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .enter-btn:hover::before {
+            left: 100%;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            background: #2a3547;
+        }
+
+        /* Navigation - Enhanced with burger menu */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow-light);
+            transform: translateY(-100%); /* Start off-screen */
+            transition: transform 0.3s ease;
+        }
+
+        .navigation.show {
+            transform: translateY(0); /* Slide in when 'show' class is added */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: var(--accent-color);
+        }
+
+        /* Burger Menu Icon */
+        .burger-menu {
+            display: none; /* Hidden by default, shown on mobile */
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+
+        /* Burger menu animations for 'X' shape */
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Navigation (Slide-in menu) */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Start off-screen to the right */
+            width: 70%;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: var(--shadow-heavy);
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding-top: 80px; /* Space for fixed header */
+            overflow-y: auto; /* Enable scrolling for long menus */
+        }
+
+        .mobile-nav.active {
+            right: 0; /* Slide in when 'active' class is added */
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 2rem;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 1rem;
+            display: block;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Overlay for mobile menu */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none; /* Hidden by default */
+        }
+
+        .mobile-nav-overlay.active {
+            display: block; /* Show when 'active' class is added */
+        }
+
+        /* Floating Elements (Decorative) */
+        .floating-element {
+            display: none; /* Removed from display */
+            /* Removed position, opacity, animation, color properties */
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        @keyframes floatRandom {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(90deg); }
+            50% { transform: translateY(-60px) rotate(180deg); }
+            75% { transform: translateY(-30px) rotate(270deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Main Content Display */
+        .main-content {
+            display: none; /* Hidden until 'Enter' button is clicked */
+        }
+
+        .main-content.show {
+            display: block;
+            /* Removed animation: fadeInUp 1s ease-out; */
+        }
+
+        /* General Container and Section Styling */
+        .container, .section {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-medium);
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Welcome Section - Fixed couple logo */
+        .welcome-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%);
+            text-align: center;
+            padding: 6rem 3rem 4rem;
+            margin-top: 0;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .couple-logo {
+            width: 170px;
+            height: 170px;
+            background: var(--white);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .couple-logo::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .couple-logo h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .welcome-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-message {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            font-weight: 300;
+        }
+
+        .wedding-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .detail-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+        }
+
+        .detail-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+
+        .detail-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .detail-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Find Your Seat Button */
+        .find-seat-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .find-seat-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .find-seat-btn:hover::before {
+            left: 100%;
+        }
+
+        .find-seat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            background: #2a3547;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .section-heading p {
+            font-size: 1rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Forms - Redesigned */
+        .form-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: end; /* Align items to the bottom */
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group label i {
+            margin-right: 0.5rem;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(59, 77, 97, 0.1);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: #2a3547;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Grid Cards */
+        .grid-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .grid-card table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .grid-card th {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .grid-card td {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .grid-card tr:hover td {
+            background: var(--accent-color);
+            transform: scale(1.02);
+        }
+
+  /* Timeline - Enhanced Modal */
+        .timeline-container {
+            background: var(--white);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-medium);
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 45%;
+        }
+
+        .timeline-event:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-event:nth-child(even) {
+            left: 55%;
+            text-align: left;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            z-index: 1;
+        }
+
+        .timeline-event:nth-child(odd) .timeline-icon {
+            right: -30px; /* Position icon relative to odd events */
+        }
+
+        .timeline-event:nth-child(even) .timeline-icon {
+            left: -30px; /* Position icon relative to even events */
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-light);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover::before {
+            transform: translateX(0);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-content p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Enhanced Timeline Modal */
+        .timeline-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .timeline-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-heavy);
+            animation: modalZoom 0.3s ease-out;
+        }
+
+        @keyframes modalZoom {
+            from {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .timeline-modal h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .timeline-modal p {
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-modal-close:hover {
+            background: var(--accent-color);
+        }
+
+        /* Memories Container with Hover Effect */
+        .memories-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-medium);
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .qr-hover-container {
+            display: inline-block;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .qr-hover-container:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-heavy);
+        }
+        /* The commented out section below seems to be a placeholder for a hover effect for the QR code,
+           which can be re-enabled if desired.
+        .qr-hover-container::before {
+            content: 'Click to Upload Photos';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(59, 77, 97, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        */
+        .qr-hover-container:hover::before {
+            opacity: 1;
+        }
+
+        .qr-hover-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Love Story Carousel - NEW STYLES */
+        .love-story-container {
+            padding: 4rem 0;
+            background: var(--light-gray);
+            margin: 3rem 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px; /* Space for arrows */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slides-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden; /* Hide overflowing slides */
+            border-radius: 15px;
+            box-shadow: var(--shadow-heavy);
+            background: var(--white);
+            height: 500px; /* Adjusted height for smaller cards */
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%; /* Make slides fill wrapper height */
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%; /* Each slide takes full width of wrapper */
+            width: 100%; /* Explicit width for flex item */
+            padding: 3rem;
+            box-sizing: border-box;
+            background: var(--white);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            text-align: center;
+            overflow-y: auto; /* Enable scrolling for long content */
+        }
+
+        .carousel-slide h3 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 1rem;
+            width: 80%; /* Constrain width for a nicer look */
+        }
+
+        .carousel-slide p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            text-align: justify;
+            max-width: 80%; /* Constrain width for a nicer look */
+            margin-bottom: 1rem;
+        }
+
+        .carousel-slide .slide-page-number {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-style: italic;
+            margin-top: auto; /* Push to bottom */
+        }
+
+        /* Carousel Navigation Arrows */
+        .carousel-nav {
+            background: var(--primary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-nav.prev {
+            left: -20px; /* Position relative to carousel-container */
+        }
+
+        .carousel-nav.next {
+            right: -20px; /* Position relative to carousel-container */
+        }
+
+        .carousel-nav:hover {
+            background: #2a3547;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .carousel-nav:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: translateY(-50%) none;
+        }
+
+        /* Mobile specific adjustments for carousel */
+        @media (max-width: 768px) {
+            .carousel-container {
+                padding: 0; /* Remove side padding on mobile */
+                flex-direction: column; /* Stack arrows above/below on mobile */
+                gap: 1rem; /* Space between arrows and carousel */
+            }
+
+            .carousel-slides-wrapper {
+                height: 400px; /* Adjust height for smaller mobile screens */
+                width: 95%; /* Wider on mobile */
+            }
+
+            .carousel-nav {
+                position: static; /* Remove absolute positioning */
+                transform: none; /* Remove transform */
+                margin: 0.5rem auto; /* Center buttons */
+                width: 80px; /* Wider buttons for easier tapping */
+                height: 45px; /* Adjust height */
+                font-size: 1.2rem;
+            }
+
+            .carousel-nav.prev {
+                order: -1; /* Place prev button above carousel */
+                left: auto;
+            }
+            .carousel-nav.next {
+                order: 1; /* Place next button below carousel */
+                right: auto;
+            }
+
+            .carousel-slide {
+                padding: 2rem 1.5rem; /* Reduced padding for more content space */
+            }
+
+            .carousel-slide h3 {
+                font-size: 1.8rem; /* Smaller chapter headings for readability */
+                margin-bottom: 1.5rem;
+                width: 95%;
+            }
+
+            .carousel-slide p {
+                font-size: 0.95rem; /* Slightly smaller paragraph text */
+                line-height: 1.6; /* Adjusted line height for better readability */
+                max-width: 95%;
+            }
+
+            .carousel-slide .slide-page-number {
+                bottom: 1.5rem; /* Adjust page number position */
+                right: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Seating Chart - Enhanced for mobile */
+        .seating-chart-mirror {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Section Heading (re-used) */
+        /* .section-heading rules are defined earlier */
+
+        .mirror-frame {
+            background: transparent;
+            padding: 2rem;
+            border-radius: 0;
+            box-shadow: none;
+            border: none; /* Ensure no border from default container style */
+        }
+
+        .mirror-content {
+            background: var(--white);
+            border-radius: 25px;
+            box-shadow: var(--shadow-medium);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            border: 2px solid var(--border-color);
+        }
+
+        .mirror-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .mirror-result {
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .mirror-result.error {
+            color: #e74c3c; /* Red color for error */
+        }
+
+        /* Custom Message Box */
+        .message-box-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .message-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-heavy);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease-out;
+        }
+
+        .message-box-overlay.show .message-box {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .message-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .message-box p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+
+        .message-box button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .message-box button:hover {
+            background: #2a3547;
+            transform: translateY(-2px);
+        }
+
+        /* Card view for message box content */
+        .message-box .card-content {
+            padding: 1rem;
+            background: var(--secondary-color);
+            border-radius: 15px;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-light);
+            text-align: center; /* Center content within the card */
+        }
+
+        .message-box .card-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .message-box .card-content p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 0; /* Remove extra margin from p tag */
+        }
+
+        .message-box .card-content img.table-image-popup {
+            max-width: 120px; /* Adjust size of the image in the popup */
+            height: auto;
+            border-radius: 50%; /* Make image circular */
+            margin-bottom: 1rem; /* Space between image and text */
+            border: 3px solid var(--primary-color); /* Add a border to the image */
+            box-shadow: var(--shadow-medium); /* Add shadow to the image */
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cover-logo {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 1rem;
+            }
+
+            .cover-logo::before {
+                width: 210px;
+                height: 210px;
+            }
+
+            .cover-logo .logo-names .first-name,
+            .cover-logo .logo-names .second-name {
+                font-size: 2.2rem; /* Adjusted for mobile */
+            }
+            .cover-logo .logo-names .and-symbol {
+                font-size: 1.5rem; /* Adjusted for mobile */
+            }
+            .cover-logo .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .cover-story-title {
+                font-size: 2.8rem; /* Adjusted for mobile */
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .cover-date {
+                font-size: 1.2rem;
+            }
+
+            .cover-ornament {
+                margin: 1.5rem auto;
+            }
+
+            .nav-links {
+                display: none; /* Hide desktop nav links on mobile */
+            }
+
+            .burger-menu {
+                display: flex; /* Show burger menu on mobile */
+            }
+
+            .welcome-title {
+                font-size: 3rem;
+            }
+
+            .welcome-message {
+                font-size: 1rem;
+            }
+
+            .wedding-details {
+                grid-template-columns: 1fr; /* Stack details vertically on mobile */
+            }
+
+         /* Timeline responsiveness */
+            .timeline::before {
+                left: 20px; /* Align vertical line to the left */
+                transform: translateX(0);
+            }
+
+            .timeline-event {
+                width: 100%; /* Full width for events */
+                left: 0; /* Align all events to the left */
+                text-align: left; /* Align text to the left */
+                padding-left: 60px; /* Space for icon and line */
+            }
+
+            .timeline-event:nth-child(odd),
+            .timeline-event:nth-child(even) {
+                left: 0; /* Ensure both odd and even events are left-aligned */
+                text-align: left;
+            }
+
+            .timeline-icon {
+                left: 0; /* Align icons to the left */
+                transform: translateX(-50%); /* Centered relative to its position */
+                margin-left: 20px; /* Adjust as needed to align with the line */
+            }
+
+            .timeline-event:nth-child(odd) .timeline-icon,
+            .timeline-event:nth-child(even) .timeline-icon {
+                right: auto; /* Reset right property */
+                left: -10px; /* Move icons slightly left of the line for alignment */
+                transform: translateX(0);
+                top: -10px; /* Adjust icon position relative to its content */
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content h4 {
+                font-size: 1.3rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.95rem;
+            }
+
+            .timeline-modal-content {
+                padding: 2rem;
+                max-width: 95%;
+            }
+
+            .timeline-modal h3 {
+                font-size: 1.5rem;
+            }
+
+            .timeline-modal p {
+                font-size: 1rem;
+            }
+        
+            /* New styles for Seating Chart and Spotify Player responsiveness */
+            .table-filter-nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .table-filter-btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .table-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .table-card {
+                padding: 1.5rem;
+            }
+
+            .table-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .table-card ul {
+                font-size: 0.95rem;
+            }
+
+            .spotify-container iframe {
+                height: 300px; /* Adjust height for smaller screens */
+            }
+        }
+
+        /* New styles for Seating Chart and Spotify Player */
+        .table-filter-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .table-filter-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .table-filter-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+
+        .table-filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .table-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .table-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            overflow: hidden; /* Ensures image corners are rounded */
+            display: block; /* Explicitly ensure visibility */
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--primary-color);
+        }
+
+        .table-card img.table-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .table-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .table-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .table-card ul li {
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .table-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Spotify Container */
+        .spotify-container {
+            background: white; /* Changed to primary color */
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-medium);
+            margin: 3rem auto;
+            max-width: 1000px; /* Adjusted max-width */
+            text-align: center;
+            color: var(--white); /* Ensure text is readable on dark background */
+        }
+
+        .spotify-container .section-heading h2,
+        .spotify-container .section-heading p {
+            color: var(--text-color); /* Heading and paragraph text color changed to text-color */
+        }
+
+        .spotify-container iframe {
+            border-radius: 15px; /* Adjusted border-radius */
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Bubble animation CSS */
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: bubbleRise 3s forwards;
+            pointer-events: none;
+            z-index: 9999; /* Ensure bubbles are on top */
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-20%) translateX(calc(var(--random-x) * 100px)) scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(calc(var(--random-x) * 200px)) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+         /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        footer h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        footer p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Menu Card Specific Styles */
+        .tab-button {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .tab-button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .tab-button.active {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .menu-card-container {
+            max-width: 800px;
+            margin: 0 auto;
+            perspective: 1500px;
+        }
+
+        .menu-card {
+            position: relative;
+            width: 100%;
+            height: 700px; /* Fixed height for consistent flipping */
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .menu-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .menu-front, .menu-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(0deg);
+        }
+
+        .menu-back {
+            background: var(--white);
+            transform: rotateY(180deg);
+            justify-content: flex-start; /* Align content to top */
+            align-items: stretch; /* Stretch content horizontally */
+            overflow-y: auto; /* Enable scrolling for long menu content */
+        }
+
+        .menu-logo {
+            width: 150px;
+            height: 150px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+            /* Removed animation: pulse 2s infinite; */
+        }
+
+        .menu-logo h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .menu-ornament {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 1rem auto;
+        }
+
+        .menu-back h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .menu-section {
+            margin-bottom: 1.5rem;
+            /* Removed animation: fadeInUp 0.5s ease-out; */
+            width: 100%; /* Ensure sections take full width */
+            flex: 1; /* Allow sections to grow within the flex container */
+        }
+
+        .menu-section h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.3rem;
+        }
+
+        .menu-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-section li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            /* Removed animation: slideInLeft 0.5s ease-out; */
+            color: var(--text-color);
+        }
+
+        .menu-section.hidden {
+            display: none;
+        }
+
+        /* Game Specific Styles */
+        .game-buttons .btn {
+            margin: 0 10px 20px; /* Spacing between game selection buttons */
+            min-width: 150px;
+        }
+
+        .game-action-buttons .btn {
+            margin: 0 5px; /* Spacing for action buttons within a game */
+        }
+
+        /* Word Scramble */
+        #scrambledWord {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        #userGuess {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            width: 300px;
+            text-align: center;
+        }
+
+        #scrambleLeaderboard table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        #scrambleLeaderboard th, #scrambleLeaderboard td {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        #scrambleLeaderboard th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #scrambleLeaderboard tbody tr:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+
+        /* Word Search - New Styles */
+        .word-search-container {
+            display: flex;
+            flex-direction: column; /* Default to column for small screens */
+            gap: 2rem;
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+            padding: 2.5rem;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+            margin: 2rem auto; /* Center the container */
+        }
+
+        @media (min-width: 1024px) {
+            .word-search-container {
+                flex-direction: row; /* Row for larger screens */
+                align-items: flex-start;
+                justify-content: center; /* Center content horizontally */
+            }
+        }
+
+        .grid-container {
+            display: grid;
+            border: 2px solid #cbd5e1; /* Light gray border */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            flex-shrink: 0; /* Prevent shrinking */
+            width: 100%;
+            max-width: 350px; /* Smaller max width for grid */
+        }
+
+        .grid-cell {
+            width: 100%;
+            padding-bottom: 100%; /* Makes cells square */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(0.8rem, 2vw, 1.5rem); /* Responsive font size */
+            font-weight: bold;
+            color: #334155; /* Darker text */
+            border: 1px solid #e2e8f0; /* Lighter cell borders */
+            user-select: none; /* Prevent text selection */
+            transition: background-color 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .grid-cell span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .grid-cell.highlighted {
+            background-color: #a7f3d0; /* Light green for temporary highlight */
+            color: #065f46; /* Dark green text */
+        }
+
+        .grid-cell.found {
+            background-color: #34d399; /* Green for found words */
+            color: #ffffff; /* White text for found words */
+        }
+
+        .grid-cell.hint-highlight {
+            animation: hintPulse 1.5s infinite alternate; /* Pulsing animation for hint */
+            box-shadow: 0 0 15px 5px var(--gold); /* Glowing effect */
+        }
+
+        @keyframes hintPulse {
+            0% { background-color: var(--hint-color); transform: scale(1); }
+            100% { background-color: rgba(255, 215, 0, 0.7); transform: scale(1.05); }
+        }
+
+        .words-list-container {
+            background-color: #f8fafc; /* Very light blue-gray */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+            width: 100%;
+            max-width: 300px; /* Adjusted max width for word list */
+        }
+
+        .words-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+            gap: 0.75rem;
+        }
+
+        .words-list li {
+            font-size: 1.1rem;
+            color: #475569; /* Slate gray text */
+            padding: 0.5rem 0.75rem;
+            background-color: #e2e8f0; /* Light background for each word */
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: background-color 0.2s ease, text-decoration 0.2s ease;
+        }
+
+        .words-list li.found {
+            text-decoration: line-through;
+            color: #64748b; /* Lighter gray for found words */
+            background-color: #d1d5db; /* Gray background for found words */
+        }
+
+        .game-status {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b; /* Darker text */
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Memory Match */
+        #memoryGameGrid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            width: 100px; /* Fixed size for cards */
+            height: 100px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--white);
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .memory-card .card-front, .memory-card .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-card .card-front {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 2.5rem;
+        }
+
+        .memory-card .card-back {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: rotateY(180deg);
+        }
+
+        .memory-card.matched {
+            background-color: var(--gold);
+            pointer-events: none;
+        }
+
+        /* Scavenger Hunt */
+        .challenge-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .challenge-item {
+            background: var(--light-gray);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .challenge-item label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .challenge-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .challenge-item.completed {
+            background-color: #d4edda; /* Light green for completed */
+            color: #155724; /* Dark green text */
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .challenge-item.completed label {
+            color: #155724;
+        }
+
+        /* Responsive adjustments for games */
+        @media (max-width: 600px) {
+            .game-buttons {
+                flex-direction: column;
+            }
+            .game-buttons .btn {
+                margin: 5px 0;
+            }
+            #userGuess {
+                width: 90%;
+            }
+            #scrambleLeaderboard table {
+                width: 100%;
+            }
+            .grid-cell {
+                font-size: clamp(0.7rem, 3vw, 1.2rem); /* Smaller font for mobile */
+            }
+            .word-search-container {
+                padding: 1.5rem;
+            }
+            .words-list {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Smaller columns on mobile */
+            }
+            .memory-card {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+            #memoryGameGrid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+            }
+        }
+
+/* Wedding Song Section */
+.wedding-song-section {
+    background: var(--white); /* Added background for the card */
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-medium);
+    margin: 3rem auto;
+    max-width: 800px; /* Match Wedding Menu card width */
+    text-align: center;
+    border: 2px solid var(--border-color); /* Added border for the card */
+    transition: all 0.3s ease; /* Added transition for hover effect */
+    display: flex; /* Use flexbox for better internal layout control */
+    flex-direction: column; /* Stack children vertically */
+    /* No 'overflow: hidden;' on the main card related to content overflow,
+       as we want content to fit by scaling, not by being hidden.
+       We'll rely on text wrapping and scaling to prevent overall card overflow. */
+}
+
+/* Hover effect for the entire wedding song section card */
+.wedding-song-section:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: var(--shadow-heavy); /* Stronger shadow */
+    border-color: var(--primary-color); /* Change border color on hover */
+}
+
+.wedding-song-section .song-info h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.wedding-song-section .song-info p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.2rem; /* Reduced margin */
+}
+
+.wedding-song-section .lyrics {
+    /* Critical properties for fitting all lyrics without scrolling: */
+    width: 100%; /* Take full width of parent (minus padding) */
+    padding: 1rem 1.5rem; /* Adjusted padding to ensure space */
+    border-radius: 15px;
+    text-align: center;
+    margin: 1rem auto; /* Adjusted margin for better spacing */
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    line-height: 1.8; /* Default line height for larger screens */
+    white-space: pre-wrap; /* Preserves whitespace and wraps text */
+    word-wrap: break-word; /* Ensures long words break and wrap (legacy property) */
+    overflow-wrap: break-word; /* Modern equivalent of word-wrap: break-word */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    
+    /* Ensure height adapts to content, no fixed max-height */
+    height: auto;
+    min-height: fit-content;
+    
+    /* Important: No overflow properties that would create scrollbars */
+    overflow: visible; /* Ensure content is visible */
+}
+
+.wedding-song-section .song-link a {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-light);
+    margin-top: 1rem; /* Add some space above the link */
+}
+
+.wedding-song-section .song-link a:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet and larger phones */
+@media (max-width: 768px) {
+    .wedding-song-section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+        max-width: 90%; /* Allow card to take up more width */
+    }
+
+    .wedding-song-section .song-info h3 {
+        font-size: 1.6rem; /* Slightly smaller heading */
+    }
+
+    .wedding-song-section .song-info p {
+        font-size: 1rem; /* Slightly smaller text */
+    }
+
+    .wedding-song-section .lyrics {
+        padding: 0.8rem 1rem; /* Reduce padding to save space */
+        font-size: 0.9em; /* Scale font size down relative to parent */
+        line-height: 1.5; /* Reduce line height to condense text */
+    }
+}
+
+/* Smaller phones (e.g., iPhone SE, older Androids) */
+@media (max-width: 480px) {
+    .wedding-song-section {
+        padding: 1.5rem 1rem;
+        margin: 1.5rem 0.5rem;
+        max-width: 95%; /* Even more width on very small screens */
+    }
+
+    .wedding-song-section .song-info h3 {
+        font-size: 1.4rem; /* Smaller heading */
+    }
+
+    .wedding-song-section .song-info p {
+        font-size: 0.9rem; /* Smaller info text */
+    }
+
+    .wedding-song-section .lyrics {
+        padding: 0.5rem 0.8rem; /* Minimal padding */
+        font-size: 0.8em; /* Further scale down font size */
+        line-height: 1.4; /* Further condense line height */
+    }
+
+    .wedding-song-section .song-link a {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Even smaller devices or landscape orientation on small phones (optional, for extreme cases) */
+@media (max-width: 375px) {
+    .wedding-song-section .lyrics {
+        font-size: 0.75em; /* Potentially uncomfortably small, but ensures fit */
+        line-height: 1.3;
+    }
+}
+        /* Bubble animation CSS */
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: bubbleRise 3s forwards;
+            pointer-events: none;
+            z-index: 9999; /* Ensure bubbles are on top */
+        }
+
+        @keyframes bubbleRise {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-20%) translateX(calc(var(--random-x) * 100px)) scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(calc(var(--random-x) * 200px)) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="messageBoxOverlay" class="message-box-overlay">
+        <div class="message-box">
+            <h3 id="messageBoxTitle"></h3>
+            <p id="messageBoxContent"></p>
+            <button id="messageBoxCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <div class="loading" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <div class="cover-page" id="coverPage">
+        <div class="cover-content" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="cover-logo">
+                <h1>V&D</h1>
+            </div>
+            <div class="cover-names">
+                <h2>Verona & Dylan</h2>
+                <div class="cover-ornament"></div>
+                <p class="cover-date">September 21, 2025</p>
+            </div>
+
+        </div>
+        </div>
+        <i class="fas fa-heart floating-element" style="top: 10%; left: 5%; font-size: 3rem;"></i>
+        <i class="fas fa-ring floating-element" style="top: 20%; right: 10%; font-size: 2.5rem; animation-delay: 2s;"></i>
+        <i class="fas fa-champagne-glasses floating-element" style="bottom: 15%; left: 15%; font-size: 3.5rem; animation-delay: 4s;"></i>
+        <i class="fas fa-dove floating-element" style="top: 5%; right: 20%; font-size: 2rem; animation-delay: 1s;"></i>
+        <i class="fas fa-church floating-element" style="bottom: 5%; left: 5%; font-size: 4rem; animation-delay: 3s;"></i>
+        <i class="fas fa-star floating-element" style="top: 30%; left: 30%; font-size: 1.5rem; animation-delay: 0.5s;"></i>
+        <i class="fas fa-gift floating-element" style="bottom: 25%; right: 25%; font-size: 2.8rem; animation-delay: 2.5s;"></i>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <nav class="navigation" id="mainNav">
+            <div class="nav-container">
+<div class="nav-logo"><a href="#welcome" style="text-decoration: none; color: #3b4d61;">V&D</a></div>
+                <ul class="nav-links">
+                    <li><a href="#seating-chart">Find Seat</a></li>
+                    <li><a href="#timeline-section">Timeline</a></li>
+                    <li><a href="#seatChart">Seating Chart</a></li>
+                    <li><a href="#menuCard1">Menu</a></li> 
+                    <li><a href="#memories-section">Memories</a></li>
+                    <li><a href="#wedding-song-section">Worship song</a></li>   
+                    <li><a href="#WordScramble">Games</a></li>
+                     <li><a href="#footer">Thank You</a></li>
+                </ul>
+                <div class="burger-menu" id="burgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#seating-chart">Find Your Seat</a></li>
+                <li><a href="#seatChart">Seating Chart</a></li>
+                <li><a href="#timeline-section">Wedding Timeline</a></li>
+                <li><a href="#memories-section">Memories</a></li>
+                <li><a href="#menuCard1">Menu</a></li> 
+                <li><a href="#wedding-song-section">Worship Song</a></li>
+                <li><a href="#Playlist">Playlist</a></li>
+                <li><a href="#WordScramble">Games</a></li>
+                <li><a href="#footer">Thank You</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+        <br/>
+        <section id="welcome" class="welcome-section">
+            <div class="couple-logo" data-aos="fade-down" data-aos-duration="1000">
+                <h2>V&D</h2>
+            </div>
+            <h1 class="welcome-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Welcome to Our Wedding!</h1>
+            <p class="welcome-message" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                We are absolutely thrilled to share our special day with you. Your presence means the world to us as we embark on this beautiful journey together.
+            </p>
+
+            <div class="wedding-details">
+                <div class="detail-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Date</h3>
+                    <p>September 21, 2025</p>
+                </div>
+                <div class="detail-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="800">
+                    <i class="fas fa-clock"></i>
+                    <h3>Time</h3>
+                    <p>2:00 PM</p>
+                </div>
+                <div class="detail-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="1000">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>The Garden Venue<br>08 Boundary Rd, North Riding AH<br>Randburg, 2169</p>
+                </div>
+            </div>
+            <button class="find-seat-btn" id="scrollToSeatingBtn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Find Your Seat</button>
+        </section>
+
+        <section id="seating-chart" class="container seating-chart-mirror">
+            <div class="section-heading" data-aos="fade-up">
+                <h2>Find Your Seat</h2>
+                <p>Enter your name below to find your assigned table for the reception.</p>
+            </div>
+            <div class="mirror-content" data-aos="zoom-in">
+                <h3>Guest Seating Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txtFirstName"><i class="fas fa-user"></i> First Name</label>
+                        <input type="text" id="txtFirstName" placeholder="Enter first name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLastName"><i class="fas fa-user"></i> Last Name</label>
+                        <input type="text" id="txtLastName" placeholder="Enter last name" />
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button class="btn" id="btnSearch"><i class="fas fa-search"></i> Search</button>
+                    <button class="btn" id="btnClear"><i class="fas fa-eraser"></i> Clear</button>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="timeline-section" class="timeline-container">
+            <div class="section-heading" data-aos="fade-up">
+                <h2>Wedding Day Timeline</h2>
+                <p>Here's your guide to our special day. Click on any event for more details about what to expect.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-event" data-aos="fade-right">
+                    <div class="timeline-icon"><i class="fas fa-bell"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('1:00 PM - Guest Arrival', 'The air will be filled with a sense of anticipation as you arrive', 'Our welcoming coordinators will be waiting to assist you, guiding you to the heart of our venue where a beautiful journey awaits. Take a moment to breathe in the atmosphere and prepare your hearts for the romance about to unfold.')">
+                        <h4>1:00 PM - Guest Arrival</h4>
+                        <p>Please make your way to the venue, where our ushers will guide you to the ceremony's breathtaking setting.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-aos="fade-left">
+                    <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('2:00 PM - Ceremony', 'We invite you to take your seats in our enchanting garden ceremony space, a natural sanctuary where we will exchange our vows. ', 'Please arrive 15 minutes early to allow for a gentle and tranquil start. While we appreciate your desire to capture these precious moments, we kindly ask that you remain in your seats during the ceremony so every guest may be fully present and enjoy an unobstructed view of our union.')">
+                        <h4>2:00 PM - Ceremony</h4>
+                        <p>Join us as we exchange our vows in an enchanting garden, a space designed by nature's own beauty. We are honored to share this meaningful moment with you.</p>
+                    </div>
+                </div>
+                                <div class="timeline-event" data-aos="fade-left">
+                    <div class="timeline-icon"><i class="fas fa-camera-retro"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('3:00 PM - Capture the Moment', 'Please remain in the arena after the ceremony and wait for your turn to take a photo with the bride and groom.', 'We are so excited to capture this beautiful moment with each of you. Our coordinator will guide you gently and efficiently—thank you for following their instructions so everything flows smoothly. Your smiles and presence mean the world to us!')">
+                        <h4>3:00 PM - Capture the Moment</h4>
+                        <p>After the ceremony, please wait in the arena for your turn to take your photo with the bride and groom. Kindly follow the coordinator’s instructions so we can capture a sweet memory with everyone.</p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-event" data-aos="fade-right">
+                    <div class="timeline-icon"><i class="fas fa-glass-cheers"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('3:00 PM - Cocktail Hour', 'Following the ceremony, a celebration of love awaits. Indulge in an array of exquisite canapés and refreshing soft drinks as we slip away for a few cherished moments to capture our first portraits as a married couple. ','This is a time for you to wander through the garden, mingle, and soak in the joyous atmosphere.')">
+                        <h4>3:30 PM - Cocktail Hour</h4>
+                        <p>As the newlyweds take their first portraits, please enjoy a selection of signature cocktails and delectable hors d'oeuvres. It's the perfect time to mingle and bask in the joy of the day.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-aos="fade-left">
+                    <div class="timeline-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('5:00 PM - Reception & Dinner', 'As dusk settles, we will transition to our elegant reception hall. Join us for a beautiful three-course dinner, a culinary journey crafted with locally sourced ingredients. ', 'Heartfelt speeches will fill the room, celebrating the love that has brought us all together. Rest assured, all dietary needs have been thoughtfully considered to ensure a delightful experience for everyone.')">
+                        <h4>5:00 PM - Reception & Dinner</h4>
+                        <p>The doors to our elegant reception hall are open! Find your seats for a gourmet dinner and heartfelt toasts from our dearest family and friends.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-aos="fade-right">
+                    <div class="timeline-icon"><i class="fas fa-music"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('7:00 PM - Dancing & Celebration', 'The evening will culminate in a night of dancing and celebration under the glow of the stars. ', 'Our DJ will set the mood with a curated playlist of songs that are dear to our hearts and have also incorporated your requests. The dance floor is for all, so let’s get lost in the music and celebrate until the last star shines brightly in the sky.')">
+                        <h4>7:00 PM - Dancing & Celebration</h4>
+                        <p>The music beckons! The dance floor awaits, where we will celebrate with live music and a vibrant DJ. Let's dance and create memories until the stars come out.</p>
+                    </div>
+                </div>
+                <div class="timeline-event" data-aos="fade-right">
+                    <div class="timeline-icon"><i class="fas fa-hand-peace"></i></div>
+                    <div class="timeline-content" onclick="openTimelineModal('10:00 PM – A Heartfelt Thank You', 'Our hearts are overflowing with gratitude for each and every one of you who celebrated with us. Having you here to share in our joy has made our wedding day more magical than we ever could have imagined. Your love, support, and well wishes mean the world to us, and we will forever cherish the memories we have made together.',' Thank you for making our wedding day a dream come true. We wish you all a safe trip home and look forward to seeing you again soon!')">
+                        <h4>10:00 PM - A Heartfelt Thank You</h4>
+                        <p>Thank you for making our wedding day a dream come true. We wish you all a safe trip home and look forward to seeing you again soon!</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="timeline-modal" id="timelineModal">
+            <div class="timeline-modal-content">
+                <button class="timeline-modal-close" id="timelineModalClose">×</button>
+                <h3 id="modalTitle"></h3>
+                <p id="modalContent"></p>
+            </div>
+        </div>
+
+        <section class="section" id="seatChart">
+            <div class="seating-chart-mirror">
+                <div class="section-heading" data-aos="fade-up">
+                    <h2>Seating Chart</h2>
+                    <p>Find your table and get to know your dining companions for the evening.</p>
+                </div>
+
+                <div class="table-filter-nav" data-aos="fade-up" data-aos-delay="200">
+                    <button class="table-filter-btn active" data-filter="all">All Tables</button>
+                    <button class="table-filter-btn" data-filter="Amethyst">Amethyst</button>
+                    <button class="table-filter-btn" data-filter="Citrine">Citrine</button>
+                    <button class="table-filter-btn" data-filter="Diamond">Diamond</button>
+                    <button class="table-filter-btn" data-filter="Emerald">Emerald</button>
+                    <button class="table-filter-btn" data-filter="Garnet">Garnet</button>
+                    <button class="table-filter-btn" data-filter="Kunzite">Kunzite</button>
+                    <button class="table-filter-btn" data-filter="Moonstone">Moonstone</button>
+                    <button class="table-filter-btn" data-filter="Opal">Opal</button>
+                    <button class="table-filter-btn" data-filter="Pearl">Pearl</button>
+                    <button class="table-filter-btn" data-filter="Ruby">Ruby</button>
+                    <button class="table-filter-btn" data-filter="Sapphire">Sapphire</button>
+                    <button class="table-filter-btn" data-filter="Topaz">Topaz</button>
+                    <button class="table-filter-btn" data-filter="Carnelian">Carnelian</button>
+                    <!-- <button class="table-filter-btn" data-filter="B&G Table">B&G Table</button>--> 
+                </div>
+
+                <div class="mirror-frame">
+                    <div class="table-gallery" id="tableGallery">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section" id="menuCard1">
+            <div class="section-heading">
+                <h2>Wedding Menu</h2>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <button class="tab-button active" onclick="filterMenu('adult')">Adult Menu</button>
+                <button class="tab-button" onclick="filterMenu('children')">Children's Menu</button>
+            </div>
+
+            <div class="menu-card-container">
+                <div class="menu-card" id="menuCard">
+                    <div class="menu-front">
+                        <div class="menu-logo">
+                            <h1>V&D</h1>
+                        </div>
+                        <h2>Wedding Menu</h2>
+                        <div class="menu-ornament"></div>
+                        <p style="font-size: 1.2rem; color: var(--text-color);">Discover the culinary delights we've prepared for our special day.</p>
+                        <button class="btn" onclick="flipMenuCard()" style="margin-top: 2rem; animation: float 3s ease-in-out infinite;">View Menu</button>
+                    </div>
+
+                    <div class="menu-back">
+                        <h3>Our Wedding Feast</h3>
+
+                        <div class="menu-section adult">
+                            <h4>Starters</h4>
+                            <ul>
+                                <li data-category="adult">
+                                    <span><b>Peppadew & Herb Bruschetta:</b> A perfect first bite of crisp bruschetta, topped with a bright medley of chopped peppadews and fresh herbs, finished with a drizzle of aged balsamic.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-section children hidden">
+                            <h4>Starters (Kids)</h4>
+                            <ul>
+                                <li data-category="children">
+                                    <span><b>Rainbow Fruit Sticks:</b> A colorful skewer of fresh, juicy fruit, including sweet strawberries, plump grapes, and sun-ripened melon—a tasty treat for a healthy start.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-section adult">
+                            <h4>Main Course</h4>
+                            <ul>
+                                <li data-category="adult">
+                                    <span><b>Slow-Roasted Honey-Mustard Chicken:</b> Tender chicken, bathed in a sweet and tangy honey-mustard glaze, and roasted to a beautiful golden brown.</span>
+                                </li>
+                                <li data-category="adult">
+                                    <span><b>Spit-Roasted Beef with Rosemary & Garlic:</b> A prime cut of beef, meticulously slow-roasted on a spit and infused with the aromatic essence of fresh rosemary and roasted garlic.</span>
+                                </li>
+                                <li data-category="adult">
+                                    <span><b>Aromatic Chicken & Vegetable Biryani:</b> A fragrant and flavorful Indian classic, with layers of tender chicken and garden vegetables simmered in a symphony of spices and fluffy basmati rice.</span>
+                                </li>
+                              <li data-category="adult">
+                                    <span> <b>Accompaniments:</b> Savory basmati rice, parmesan crusted roasted potatoes, oven baked mixed vegetables, cream spinach, cauliflower, broccoli white sauce                           
+                                </li>                              
+                            </ul>
+                        </div>
+                        <div class="menu-section children hidden">
+                            <h4>Main Course (Kids)</h4>
+                            <ul>
+                                <li data-category="children">
+                                    <span><b>Creamy Macaroni & Cheese with Golden Chicken Bites:</b> A rich and cheesy macaroni, served with crispy, golden chicken nuggets that are perfect for dipping.</span>
+                                </li>
+                                <li data-category="children">
+                                    <span><b>Hearty Macaroni with Savory Mince & Golden Chicken Bites:</b> A comforting bowl of macaroni and a flavorful, savory mince, served alongside delicious, crispy chicken nuggets.</span>
+                                </tr>
+                            </ul>
+                        </div>
+
+                        <div class="menu-section adult">
+                            <h4>Desserts</h4>
+                            <ul>
+                                <li data-category="adult">
+                                    <span><b>Rich Chocolate Brownie & Caramel Mousse:</b> A pairing of dense, fudgy brownies with a light and ethereal salted caramel mousse.</span>
+                                </li>
+                                <li data-category="adult">
+                                    <span><b>Velvety New York-Style Cheesecake</b></span>
+                                </li>
+                                <li data-category="adult">
+                                    <span><b>Traditional Peppermint Crisp Tart:</b> A nostalgic South African treat with crushed peppermint and a delicate caramel cream.</span>
+                                </li>
+                                 <li data-category="adult">
+                                    <span><b>Artisanal Wedding Cake:</b> A handcrafted masterpiece in your choice of Blueberry, Rich Caramel, or Decadent Chocolate.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-section children hidden">
+                            <h4>Desserts (Kids)</h4>
+                            <ul>
+                                <li data-category="children">
+                                    <span><b>Rich Chocolate Brownie & Caramel Mousse:</b> A pairing of dense, fudgy brownies with a light and ethereal salted caramel mousse.</span>
+                                </li>
+                                <li data-category="children">
+                                    <span><b>Velvety New York-Style Cheesecake</b></span>
+                                </li>
+                                <li data-category="children">
+                                    <span><b>Traditional Peppermint Crisp Tart:</b> A nostalgic South African treat with crushed peppermint and a delicate caramel cream.</span>
+                                </li>
+                                 <li data-category="children">
+                                    <span><b>Artisanal Wedding Cake:</b> A handcrafted masterpiece in your choice of Blueberry, Rich Caramel, or Decadent Chocolate.</span>
+                                </li>          
+                            </ul>
+                        </div>
+                        <br />
+                        <div style="text-align: center; margin-top: auto;">
+                            <button class="btn" onclick="flipMenuCard()" style="animation: float 3s ease-in-out infinite;">Back to Cover</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="memories-section" class="memories-container">
+            <div class="section-heading" data-aos="fade-up">
+                <h2>Share Your Memories</h2>
+                <p>We'd love for you to share your favorite photos and moments from our wedding day! Scan the QR code or click below to upload directly.</p>
+            </div>
+            <div class="qr-hover-container" data-aos="zoom-in">
+                <a href="https://drive.google.com/drive/folders/1bFQIgmAfvcvUcCaEqtj9pGUs6FDa3lGe?usp=drive_link" target="_blank">
+                    <img src="V&D.png" alt="QR Code for Photo Sharing">
+                </a>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--primary-color);" data-aos="fade-up" data-aos-delay="200">
+                #Verona&DylanWedding
+            </p>
+        </section>
+
+                         <!-- Wedding Song Section -->
+
+            <section class="wedding-song-section" id="wedding-song-section">
+            <div class="section-heading">
+                <h2>Our Wedding Song</h2>
+                <p>This song holds a special place in our hearts.</p>
+            </div>
+            <div class="song-info">
+                <h3>My Worship</h3>
+                <p>Artist:  Phil Thompson </p>
+            </div>
+            <div class="lyrics">
+                <pre>
+You Lord, You are worthy
+And no one can worship You for me
+For all the things You've done for me
+And no one can worship You for me (lift it up)
+Here's my worship
+All of my worship
+Receive my worship
+All of my worship
+Here's my worship (all of mine)
+All of my worship (Father, receive my)
+Receive my worship (all of my worship)
+All of my worship
+You Lord, You are worthy (and no one)
+And no one can worship You for me (for all the)
+For all the things You've done for me (and no one)
+And no one can worship You for me
+Come on, let's sing high in this place
+Here's my worship (say, "All of my")
+All of my worship (receive my)
+Receive my worship (all I have I give to You)
+All of my worship (receive it all)
+Here's my worship (say "All of my")
+All of my worship (oh God, receive it all)
+Receive my worship (say "All of my")
+All of my worship (hey, You receive)
+Here's my worship (receive all of my)
+All of my worship (receive my)
+Receive my worship (say "All of my")
+All of my worship (hey, here it is)
+Here's my worship (all of my)
+All of my worship (God receive it all)
+Receive my worship (say "All of my")
+All of my worship (sing "I will")
+And I will not be silent
+I will always worship You
+As long as I am breathing
+I will always worship You (saying "I will")
+And I will not be silent (saying "I will")
+I will always worship You (say "As long as")
+As long as I am breathing (saying "I will")
+I will always worship You 
+(hey! Let's take it up in this place, and I will)
+And I will not be silent (say "I will")
+I will always worship You (say "As long as")
+As long as I am breathing (say "I will")
+I will always worship You (here it is)
+Here's my worship (Father, here's my sacrifice)
+All of my worship (oh God, You can have it all)
+Receive my worship (say "All of my")
+All of my worship
+Here's my worship (it's all I have)
+All of my worship (oh God, receive it all)
+Receive my worship
+All of my worship
+You Lord, You are worthy
+                </pre>
+            </div>
+            <div class="song-link">
+                <a href="https://www.youtube.com/watch?v=tYGxg2uUOJg" target="_blank">Listen to the Song <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </section>
+
+
+        <div class="spotify-container" id="Playlist">
+            <div class="section-heading">
+                <h2 style="color:#3b4d61">Our Wedding Playlist</h2>
+                <p style="color:#3b4d61">Listen to the songs that tell our love story and will soundtrack our special day.</p>
+            </div>
+            <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6" 
+                    width="100%" 
+                    height="380" 
+                    frameborder="0" 
+                    allowtransparency="true" 
+                    allow="encrypted-media">
+            </iframe>
+        </div>
+
+        <!-- Word Scramble Game -->
+        <div class="section" id="WordScramble">
+            <div class="section-heading">
+                <h2>Wedding Word Games</h2>
+                <p>Test your wedding knowledge with our fun word games! Choose which game you'd like to play below.</p>
+            </div>
+            
+            <div class="container" style="text-align: center;">
+                <!-- Game Selection Buttons -->
+                <div class="game-buttons" style="margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap;">
+                    <button id="scrambleGameBtn" class="btn">Word Scramble</button>
+                    <button id="searchGameBtn" class="btn">Word Search</button>
+                    <button id="memoryGameBtn" class="btn">Memory Match</button>
+                    <button id="huntGameBtn" class="btn">Scavenger Hunt</button>
+                </div>
+                
+                <!-- Word Scramble Game -->
+                <div id="scrambleGameContainer" style="display: none;">
+                    <h3 style="margin-bottom: 20px;">Wedding Word Scramble</h3>
+                    <p style="margin-bottom: 20px;">Unscramble the letters to reveal wedding-related words.</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div id="scrambleTimer" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Time: 60</div>
+                        <div id="scrambledWord" style="font-size: 2.5rem; font-weight: 600; letter-spacing: 3px; color: var(--primary-color); margin-bottom: 1rem;"></div>
+                        <input type="text" id="userGuess" placeholder="Your answer" style="padding: 1rem 1.5rem; border: 2px solid var(--border-color); border-radius: 50px; font-size: 1rem; margin-bottom: 1rem; width: 300px; text-align: center;" />
+                        <div class="game-action-buttons">
+                            <button id="submitGuess" class="btn">Submit</button>
+                           <button id="nextWord" class="btn" disabled>Next Word</button>
+                           <button id="startScrambleGame" class="btn" style="background-color: green;">Start Game</button>
+                           <button id="endScrambleGame" class="btn" style="background-color: #d9534f; display: none;">End Game</button>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div id="scrambleResult" style="font-size: 1.2rem; margin-bottom: 1rem; min-height: 30px;"></div>
+                        <div id="scrambleScore" style="font-size: 1.5rem; color: var(--primary-color);">Score: 0</div>
+                    </div>
+                    
+                    <div id="scrambleLeaderboard" style="margin-top: 30px; display: none;">
+                        <h3>Leaderboard</h3>
+                        <table style="width: 80%; margin: 0 auto; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 10px; background-color: var(--primary-color); color: white;">Rank</th>
+                                    <th style="padding: 10px; background-color: var(--primary-color); color: white;">Name</th>
+                                    <th style="padding: 10px; background-color: var(--primary-color); color: white;">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scrambleLeaderboardBody">
+                                <!-- Leaderboard entries will be populated here -->
+                            </tbody>
+                        </table>
+                        <button id="clearScrambleLeaderboard" class="btn" style="margin-top: 15px; background-color: #d9534f;">Clear Leaderboard</button>
+                    </div>
+                </div>
+                
+                <!-- Word Search Game -->
+                <div id="searchGameContainer" style="display: none;">
+                    <h3 style="margin-bottom: 20px;">Wedding Word Search</h3>
+                    <p style="margin-bottom: 20px;">Find all the wedding-related words hidden in the grid.</p>
+                    
+                    <div style="margin-bottom: 20px; text-align: center; width: 100%;">
+                        <label for="difficultySelect" style="font-weight: bold; margin-right: 10px; color: var(--primary-color);">Difficulty:</label>
+                        <select id="difficultySelect" class="btn" style="padding: 0.5rem 1rem; border-radius: 10px; background-color: var(--accent-color); color: var(--primary-color); border: 1px solid var(--border-color);">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+
+                    <div class="word-search-container">
+                        <div class="grid-container" id="wordSearchGridContainer">
+                            <!-- Grid cells will be injected here by JavaScript -->
+                        </div>
+
+                        <div class="words-list-container">
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Words to Find:</h2>
+                            <ul class="words-list" id="wordsList">
+                                <!-- Word list will be injected here by JavaScript -->
+                            </ul>
+                            <div class="game-status mt-6 text-lg font-medium text-gray-700">
+                                Words Found: <span id="wordsFoundCount">0</span> / <span id="totalWordsCount">0</span>
+                            </div>
+                            <div id="hintResult" style="font-size: 1rem; color: #d4af37; margin-top: 10px; min-height: 20px;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="startSearchGame" class="btn" style="margin-right: 10px; background-color: green;">Start Game</button>
+                        <button id="endSearchGame" class="btn" style="background-color: #d9534f; display: none;">End Game</button>
+                        <button id="resetSearchGame" class="btn" style="margin-left: 10px; display: none;">Reset Game</button>
+                        <button id="getHintBtn" class="btn" style="background-color: var(--gold); margin-left: 10px;"><i class="fas fa-lightbulb"></i> Get Hint</button>
+                        <div id="wordSearchTimer" style="font-size: 1.5rem; color: var(--primary-color); margin-top: 10px;">Time: 0</div>
+                    </div>
+                    <div id="searchResult" style="font-size: 1.2rem; margin: 1rem 0; min-height: 30px;"></div>
+                </div>
+
+                <!-- Memory Match Game -->
+                <div id="memoryGameContainer" style="display: none;">
+                    <h3 style="margin-bottom: 20px;">Wedding Memory Match</h3>
+                    <p style="margin-bottom: 20px;">Test your memory by matching wedding-themed pairs. Find all the matches to win!</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div id="memoryTimer" style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 10px;">Time: 0</div>
+                        <div id="memoryMoves" style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 10px;">Moves: 0</div>
+                        <div id="memoryMatches" style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 20px;">Matches: 0/8</div>
+                        
+                        <div>
+                            <button id="startMemoryGame" class="btn" style="margin-right: 10px; background-color: green;">Start Game</button>
+                            <button id="resetMemoryGame" class="btn" style="background-color: #d9534f; display: none;">Reset Game</button>
+                        </div>
+                    </div>
+                    
+                    <div id="memoryResult" style="font-size: 1.2rem; margin: 1rem 0; min-height: 30px;"></div>
+                    
+                    <div id="memoryGameGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 600px; margin: 0 auto;"></div>
+                </div>
+
+                <!-- Scavenger Hunt Game -->
+                <div id="huntGameContainer" style="display: none;">
+                    <h3 style="margin-bottom: 20px;">Wedding Scavenger Hunt</h3>
+                    <p style="margin-bottom: 20px;">Complete fun photo challenges during the wedding to win prizes and create lasting memories!</p>
+                    
+                    <div style="margin-bottom: 30px; text-align: left; max-width: 800px; margin: 0 auto;">
+                        <div id="huntInstructions" style="padding: 20px; background-color: var(--accent-color); border-radius: 10px; margin-bottom: 20px;">
+                            <h4 style="margin-bottom: 10px;">How to Play:</h4>
+                            <ol style="margin-left: 20px; line-height: 1.6;">
+                                <li>Choose a challenge from the list below</li>
+                                <li>Take a photo that matches the challenge description</li>
+                                <li>Upload your photo using the "Complete Challenge" button</li>
+                                <li>Mark challenges as complete to track your progress</li>
+                                <li>Complete as many challenges as you can before the end of the reception!</li>
+                            </ol>
+                            <p style="margin-top: 10px;"><strong>Note:</strong> You can upload your photo to the photo album in memories using the QR code. You can scan the provided QR code with a QR code scanner or click on the code directly to be taken to the upload page.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <div id="huntProgress" style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 10px;">Progress: 0/20 challenges completed</div>
+                        </div>
+                        
+                        <h4 style="margin-bottom: 15px; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px;">Challenge 1: Simple Challenges</h4>
+                        <div id="simpleChallenges" class="challenge-list">
+                            <!-- Simple challenges will be populated here -->
+                        </div>
+                        
+                        <h4 style="margin: 30px 0 15px; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px;">Challenge 2: Creative Challenges</h4>
+                        <div id="creativeChallenges" class="challenge-list">
+                            <!-- Creative challenges will be populated here -->
+                        </div>
+                        
+                        <h4 style="margin: 30px 0 15px; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px;">Challenge 3: Interactive Challenges</h4>
+                        <div id="interactiveChallenges" class="challenge-list">
+                            <!-- Interactive challenges will be populated here -->
+                        </div>
+                        
+                        <div id="bonusChallenges" style="margin-top: 30px; display: none;">
+                            <h4 style="margin-bottom: 15px; border-bottom: 2px solid var(--gold); padding-bottom: 5px; color: var(--gold);">Bonus Challenges:</h4>
+                            <div id="bonusChallengesList" class="challenge-list">
+                                <!-- Bonus challenges will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <footer id="footer">
+            <h1>Thank You for Celebrating With Us</h1>
+            <p>To our dear family and friends, thank you from the bottom of our hearts for being a part of our wedding celebration. Your presence, your well-wishes, and your support mean the world to us as we begin this new chapter in our lives. We are so grateful to have you share in our joy and create beautiful memories together.</p>
+            <div class="cover-ornament"></div>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 2rem;"> Verona & Dylan. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i></p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Custom Message Box Functions ---
+        function showMessage(title, message) {
+            const messageBoxOverlay = document.getElementById('messageBoxOverlay');
+            const messageBoxTitle = document.getElementById('messageBoxTitle');
+            const messageBoxContent = document.getElementById('messageBoxContent');
+            const messageBoxCloseBtn = document.getElementById('messageBoxCloseBtn');
+
+            messageBoxTitle.textContent = title;
+            // message parameter can now contain HTML for card view
+            messageBoxContent.innerHTML = message;
+            messageBoxOverlay.classList.add('show');
+            messageBoxOverlay.style.display = 'flex'; // Ensure it's flex for centering
+
+            messageBoxCloseBtn.onclick = () => {
+                messageBoxOverlay.classList.remove('show');
+                messageBoxOverlay.style.display = 'none';
+            };
+        }
+
+// --- Guest List Data ---
+const guestList = [
+  // Amethyst Table
+  { firstName: "Tashrequa", lastName: "Thumbiran", table: "Amethyst" },
+  { firstName: "Sharni", lastName: "Thumbiran", table: "Amethyst" },
+  { firstName: "Damian", lastName: "Moodley", table: "Amethyst" },
+  { firstName: "Kayla", lastName: "Moodley", table: "Amethyst" },
+  { firstName: "Makayla", lastName: "Moodley", table: "Amethyst" },
+  { firstName: "Lance", lastName: "Moonsamy", table: "Amethyst" },
+  { firstName: "Lebo", lastName: "Chauke", table: "Amethyst" },
+  { firstName: "Keanan", lastName: "Beharrie", table: "Amethyst", side:"left" },
+  { firstName: "Natasha", lastName: "Beharrie", table: "Amethyst" },
+  { firstName: "Develyn", lastName: "Beharrie", table: "Amethyst" },
+  // Citrine Table
+  { firstName: "Rochelle", lastName: "Moodley", table: "Citrine" },
+  { firstName: "Shaun", lastName: "Moodley", table: "Citrine" },
+  { firstName: "Denise", lastName: "Govender", table: "Citrine" },
+  { firstName: "Pam", lastName: "Reddy", table: "Citrine" },
+  { firstName: "Seelan", lastName: "Reddy", table: "Citrine" },
+  { firstName: "Joshua", lastName: "Moonsamy", table: "Citrine" },
+  { firstName: "Tyron", lastName: "Reddy", table: "Citrine" },
+  { firstName: "Linda", lastName: "Bukan", table: "Citrine" },
+  { firstName: "Wendy", lastName: "Moodley", table: "Citrine" },
+  { firstName: "Sandra", lastName: "Devarjoo", table: "Citrine" },
+  // Diamond Table
+  { firstName: "Christelene", lastName: "Beharrie Lake", table: "Diamond" },
+  { firstName: "Sherleen", lastName: "Naidoo", table: "Diamond" },
+  { firstName: "Viven", lastName: "Naidoo", table: "Diamond" },
+  { firstName: "Vigie", lastName: "Naidoo", table: "Diamond" },
+  { firstName: "Liza", lastName: "Pillay", table: "Diamond" },
+  { firstName: "Craig", lastName: "Pillay", table: "Diamond" },
+  { firstName: "Nadine", lastName: "Beharrie", table: "Diamond" },
+  { firstName: "Andrea", lastName: "Peters", table: "Diamond" },
+  { firstName: "Mekayla", lastName: "Peters", table: "Diamond" },
+  { firstName: "Polokego", lastName: "Mokwena", table: "Diamond" },
+  // Emerald Table
+  { firstName: "Neil", lastName: "Singh", table: "Emerald" },
+  { firstName: "Zyda", lastName: "Singh", table: "Emerald" },
+  { firstName: "Dean", lastName: "Rammble", table: "Emerald" },
+  { firstName: "Jyoti", lastName: "Rammble", table: "Emerald" },
+  { firstName: "Jack", lastName: "Beharrie", table: "Emerald" },
+  { firstName: "Ellen", lastName: "Beharrie", table: "Emerald" },
+  { firstName: "Nakita", lastName: "Beharrie", table: "Emerald" },
+  { firstName: "Shane", lastName: "Moodley", table: "Emerald" },
+  { firstName: "Reena", lastName: "Moodley", table: "Emerald" },
+  // Garnet Table
+  { firstName: "Daniell", lastName: "Sagathevan", table: "Garnet" },
+  { firstName: "Aaryanna", lastName: "Sagathevan", table: "Garnet" },
+  { firstName: "Jaedon", lastName: "Reddy", table: "Garnet" },
+  { firstName: "Delese", lastName: "Singh", table: "Garnet" },
+  { firstName: "Shabena", lastName: "Khan", table: "Garnet" },
+  { firstName: "Zain", lastName: "Khan", table: "Garnet" },
+  { firstName: "Daneel", lastName: "Thumbiran", table: "Garnet" },
+  { firstName: "Kira", lastName: "Thumbiran", table: "Garnet" },
+  { firstName: "Lameez", lastName: "Ramsoroop", table: "Garnet" },
+  { firstName: "Sanesh", lastName: "Ramsoroop", table: "Garnet" },
+  // Kunzite Table
+  { firstName: "Aloma", lastName: "Bhowan", table: "Kunzite" },
+  { firstName: "Ronnie", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Rohena", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Vincent", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Veronica", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Patsy", lastName: "Rammble", table: "Kunzite" },
+  { firstName: "Robert", lastName: "Rammble", table: "Kunzite" },
+  { firstName: "Lionel", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Dalene", lastName: "Singh", table: "Kunzite" },
+  { firstName: "Pastor Marcus", lastName: "Thomas", table: "Kunzite" },
+  // Moonstone Table
+  { firstName: "Terence", lastName: "Bhowan", table: "Moonstone" },
+  { firstName: "Mary-Anne", lastName: "Bhowan", table: "Moonstone" },
+  { firstName: "Randell", lastName: "Singh", table: "Moonstone" },
+  { firstName: "Sadia", lastName: "Singh", table: "Moonstone" },
+  { firstName: "Theresa", lastName: "Bhowan", table: "Moonstone" },
+  { firstName: "Vincent", lastName: "Jn Singh", table: "Moonstone" },
+  { firstName: "Kayla", lastName: "Singh", table: "Moonstone" },
+  { firstName: "Lionel", lastName: "Singh", table: "Moonstone" },
+  { firstName: "Dashan", lastName: "Naicker", table: "Moonstone" },
+  { firstName: "Leigh", lastName: "Naicker", table: "Moonstone" },
+  // Opal Table
+  { firstName: "Ronnie", lastName: "Chinniah", table: "Opal" },
+  { firstName: "Dee", lastName: "Chinniah", table: "Opal" },
+  { firstName: "Shireen", lastName: "Moodley", table: "Opal" },
+  { firstName: "Ismail", lastName: "Essack", table: "Opal" },
+  { firstName: "Doice", lastName: "Essack", table: "Opal" },
+  { firstName: "Naazneen", lastName: "Ebrahim", table: "Opal" },
+  { firstName: "Mariam", lastName: "Ebrahim", table: "Opal" },
+  { firstName: "Clinton", lastName: "Pillay", table: "Opal" },
+  { firstName: "Pauline", lastName: "Pillay", table: "Opal" },
+  { firstName: "Rumbiga", lastName: "Pillay", table: "Opal" },
+  // Pearl Table
+  { firstName: "Silvan", lastName: "Mudali", table: "Pearl" },
+  { firstName: "Mandie", lastName: "Mudali", table: "Pearl" },
+  { firstName: "Deshaylin", lastName: "Mudali", table: "Pearl" },
+  { firstName: "Geivishka", lastName: "Mudali", table: "Pearl" },
+  { firstName: "Ineshin", lastName: "Naidoo", table: "Pearl" },
+  { firstName: "Silva", lastName: "Dherman", table: "Pearl" },
+  { firstName: "Jaya", lastName: "Dherman", table: "Pearl" },
+  { firstName: "Eugene", lastName: "Thumbiran", table: "Pearl" },
+  { firstName: "Dina", lastName: "Thumbiran", table: "Pearl" },
+  { firstName: "Pastor Martin", lastName: "Anthony", table: "Pearl" },
+  // Ruby Table
+  { firstName: "Sumeer", lastName: "Maharaj", table: "Ruby" },
+  { firstName: "Yhashika", lastName: "Maharaj", table: "Ruby" },
+  { firstName: "Dhyaana", lastName: "Maharaj", table: "Ruby" },
+  { firstName: "Tharun", lastName: "Maharaj", table: "Ruby" },
+  { firstName: "Bita", lastName: "Bhana", table: "Ruby" },
+  { firstName: "Venay", lastName: "Bhana", table: "Ruby" },
+  { firstName: "Shalesh", lastName: "Bhana", table: "Ruby" },
+  { firstName: "Sue", lastName: "Bhana", table: "Ruby" },
+  { firstName: "Kayleen", lastName: "Reddy", table: "Ruby" },
+  { firstName: "Tyric", lastName: "Reddy", table: "Ruby" },
+  // Sapphire Table
+  { firstName: "Clive", lastName: "Ragwan", table: "Sapphire" },
+  { firstName: "Marsha", lastName: "Ragwan", table: "Sapphire" },
+  { firstName: "Zack", lastName: "Khan", table: "Sapphire" },
+  { firstName: "Jocelyn", lastName: "Khan", table: "Sapphire" },
+  { firstName: "Ervin", lastName: "Beharrie", table: "Sapphire" },
+  { firstName: "Latoya", lastName: "Beharrie", table: "Sapphire" },
+  { firstName: "Aston", lastName: "Sebastian", table: "Sapphire" },
+  { firstName: "Elithea", lastName: "Sebastian", table: "Sapphire" },
+  { firstName: "Bruce", lastName: "Moodley", table: "Sapphire" },
+  { firstName: "Kayla", lastName: "Thompson", table: "Sapphire" },
+  // Topaz Table
+  { firstName: "Devika", lastName: "Moodley", table: "Topaz" },
+  { firstName: "Cedric", lastName: "Moodley", table: "Topaz" },
+  { firstName: "Prenisha", lastName: "Moodley", table: "Topaz" },
+  { firstName: "Shama", lastName: "Choklingo", table: "Topaz" },
+  { firstName: "Rahginie", lastName: "Padiachie", table: "Topaz" },
+  { firstName: "Rezaano", lastName: "Abdul", table: "Topaz" },
+  { firstName: "Charissa", lastName: "Abdul", table: "Topaz" },
+  { firstName: "Ebie", lastName: "Vally", table: "Topaz" },
+  { firstName: "Nastassia", lastName: "Vally", table: "Topaz" },
+  { firstName: "Shay", lastName: "Mac", table: "Topaz" },
+  // Carnelian Table
+  { firstName: "Levie", lastName: "Singh", table: "Carnelian" },
+  { firstName: "Mailia", lastName: "Moodley", table: "Carnelian" },
+  { firstName: "Caleb", lastName: "Bhowan", table: "Carnelian" },
+  { firstName: "Miguel", lastName: "Pillay", table: "Carnelian" },
+  { firstName: "Ilya-Mae", lastName: "Naidoo", table: "Carnelian" },
+  { firstName: "Aaliyah", lastName: "Swart", table: "Carnelian" },
+  { firstName: "Mason", lastName: "Bhowan", table: "Carnelian" },
+  { firstName: "Alaina", lastName: "Singh", table: "Carnelian" },
+  { firstName: "Ava", lastName: "Pillay", table: "Carnelian" },
+  { firstName: "Max", lastName: "Lake", table: "Carnelian" },
+  { firstName: "Chad", lastName: "Pillay", table: "Carnelian" },
+  { firstName: "Hannah", lastName: "Moodley", table: "Carnelian" },
+  { firstName: "Alyssa", lastName: "Pillay", table: "Carnelian" },
+  { firstName: "Caleb", lastName: "Reddy", table: "Carnelian" },
+  { firstName: "Mia", lastName: "Pillay", table: "Carnelian" },
+  { firstName: "John", lastName: "Singh", table: "Carnelian" },
+  { firstName: "Xavier", lastName: "Bhowan", table: "Carnelian" },
+  { firstName: "Zidane", lastName: "Singh", table: "Carnelian" },
+  { firstName: "Jade", lastName: "Bhowan", table: "Carnelian" },
+  { firstName: "Qayla", lastName: "Singh", table: "Carnelian" }
+];
+        // --- DOM Elements ---
+        const loadingScreen = document.getElementById('loadingScreen');
+        const coverPage = document.getElementById('coverPage');
+        const mainContent = document.getElementById('mainContent');
+        const mainNav = document.getElementById('mainNav');
+        const burgerMenu = document.getElementById('burgerMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const scrollToSeatingBtn = document.getElementById('scrollToSeatingBtn');
+
+        const txtFirstName = document.getElementById('txtFirstName');
+        const txtLastName = document.getElementById('txtLastName');
+        const btnSearch = document.getElementById('btnSearch');
+        const btnClear = document.getElementById('btnClear');
+
+        const timelineModal = document.getElementById('timelineModal');
+        const timelineModalClose = document.getElementById('timelineModalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+
+        // Removed carousel related DOM elements as the Love Story section is removed
+        // const carouselSlides = document.getElementById('carouselSlides');
+        // const prevSlideBtn = document.getElementById('prevSlideBtn');
+        // const nextSlideBtn = document.getElementById('nextSlideBtn');
+        let currentSlideIndex = 0; // Still keep for potential future use or to avoid errors if other functions indirectly depend on it
+
+        const tableFilterButtons = document.querySelectorAll('.table-filter-btn');
+        const tableGallery = document.getElementById('tableGallery');
+
+        // Game Elements
+        const scrambleGameBtn = document.getElementById('scrambleGameBtn');
+        const searchGameBtn = document.getElementById('searchGameBtn');
+        const memoryGameBtn = document.getElementById('memoryGameBtn');
+        const huntGameBtn = document.getElementById('huntGameBtn');
+
+        const scrambleGameContainer = document.getElementById('scrambleGameContainer');
+        const searchGameContainer = document.getElementById('searchGameContainer');
+        const memoryGameContainer = document.getElementById('memoryGameContainer');
+        const huntGameContainer = document.getElementById('huntGameContainer');
+
+        // Word Scramble Elements
+        const scrambleWords = ["WEDDING", "BRIDE", "GROOM", "CEREMONY", "RECEPTION", "VOWS", "RINGS", "FLOWERS", "CAKE", "MUSIC", "GUESTS", "LOVE", "HAPPINESS", "CELEBRATE", "TOAST"];
+        let currentScrambleWord = '';
+        let scrambledWordDisplay = document.getElementById('scrambledWord');
+        let userGuessInput = document.getElementById('userGuess');
+        let submitGuessBtn = document.getElementById('submitGuess');
+        let nextWordBtn = document.getElementById('nextWord');
+        let startScrambleGameBtn = document.getElementById('startScrambleGame');
+        let endScrambleGameBtn = document.getElementById('endScrambleGame');
+        let scrambleResultDisplay = document.getElementById('scrambleResult');
+        let scrambleScoreDisplay = document.getElementById('scrambleScore');
+        let scrambleTimerDisplay = document.getElementById('scrambleTimer');
+        let scrambleLeaderboard = document.getElementById('scrambleLeaderboard');
+        let scrambleLeaderboardBody = document.getElementById('scrambleLeaderboardBody');
+        let clearScrambleLeaderboardBtn = document.getElementById('clearScrambleLeaderboard');
+
+        let scrambleScore = 0;
+        let scrambleTimeLeft = 60;
+        let scrambleTimerInterval;
+        let currentScrambleWordIndex = 0;
+        let scrambleGameStarted = false;
+
+        // Word Search Elements
+        const allWordSearchWordsData = [
+            { word: "WEDDING", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "BRIDE", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "GROOM", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "RINGS", min_difficulty: "medium", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "CAKE", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1] }, // Easy: only H/V
+            { word: "MUSIC", min_difficulty: "medium", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "LOVE", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "AISLE", min_difficulty: "medium", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "TOAST", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1] }, // Easy: only H/V
+            { word: "VOWS", min_difficulty: "easy", max_difficulty: "hard", allowed_directions: [0, 1] }, // Easy: only H/V
+            { word: "DANCING", min_difficulty: "medium", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "RECEPTION", min_difficulty: "hard", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "CEREMONY", min_difficulty: "hard", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "HONEYMOON", min_difficulty: "hard", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] },
+            { word: "HAPPILY", min_difficulty: "hard", max_difficulty: "hard", allowed_directions: [0, 1, 2, 3, 4, 5] }
+        ];
+
+        // Fixed grid size as requested: 9 rows x 8 columns
+        const gridRows = 9;
+        const gridCols = 8;
+
+        // DOM Elements for Word Search
+        const gridContainer = document.getElementById('wordSearchGridContainer');
+        const wordsListElement = document.getElementById('wordsList');
+        const wordsFoundCountElement = document.getElementById('wordsFoundCount');
+        const totalWordsCountElement = document.getElementById('totalWordsCount');
+        const startSearchGameBtn = document.getElementById('startSearchGame');
+        const endSearchGameBtn = document.getElementById('endSearchGame');
+        const resetSearchGameBtn = document.getElementById('resetSearchGame');
+        const wordSearchTimerDisplay = document.getElementById('wordSearchTimer');
+        const searchResultDisplay = document.getElementById('searchResult');
+        const difficultySelect = document.getElementById('difficultySelect');
+        const getHintBtn = document.getElementById('getHintBtn');
+        const hintResultDisplay = document.getElementById('hintResult');
+
+
+        // Game State Variables for Word Search
+        let isDragging = false;
+        let startCell = null; // { row, col }
+        let currentHighlightedCells = []; // Array of DOM elements
+        let foundWords = new Set(); // Store found words to prevent re-finding
+        let gridLetters = []; // 2D array to store the actual letters in the grid
+        let gridCellElements = []; // 2D array to store references to grid cell DOM elements
+        let searchTimeElapsed = 0;
+        let searchTimerInterval;
+        let currentWordSearchDifficulty = 'easy'; // Default difficulty
+        let wordsInGrid = []; // Stores words that were actually placed in the grid, along with their coordinates
+
+        // Memory Match Elements
+        const memoryEmojis = ["💖", "💍", "�", "💐", "🍰", "🎶", "🎁", "🕊️"];
+        let memoryGameGrid = document.getElementById('memoryGameGrid');
+        let memoryTimerDisplay = document.getElementById('memoryTimer');
+        let memoryMovesDisplay = document.getElementById('memoryMoves');
+        let memoryMatchesDisplay = document.getElementById('memoryMatches');
+        let startMemoryGameBtn = document.getElementById('startMemoryGame');
+        let resetMemoryGameBtn = document.getElementById('resetMemoryGame');
+        let memoryResultDisplay = document.getElementById('memoryResult');
+
+        let memoryCards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let memoryMoves = 0;
+        let memoryTimeElapsed = 0;
+        let memoryTimerInterval;
+        let canFlip = true;
+
+        // Scavenger Hunt Elements
+        const simpleChallengesContainer = document.getElementById('simpleChallenges');
+        const creativeChallengesContainer = document.getElementById('creativeChallenges');
+        const interactiveChallengesContainer = document.getElementById('interactiveChallenges');
+        const bonusChallengesList = document.getElementById('bonusChallengesList');
+        const huntProgressDisplay = document.getElementById('huntProgress');
+
+        // Scavenger Hunt Variables - UPDATED WITH USER'S PROVIDED DATA
+        const huntChallenges = {
+            simple: [
+                { id: 'selfie', title: '"Say Cheese!" Selfie', description: 'Take a selfie with someone you just met at the wedding.' },
+                { id: 'tableSelfie', title: 'Table Selfie', description: 'Gather everyone at your table for a group selfie!' },
+                { id: 'cheers', title: '"Cheers!" Moment', description: 'Capture a photo of someone raising a glass in a toast.' },
+                { id: 'happyFaces', title: 'Happy Faces', description: 'Take a picture of someone genuinely smiling or laughing.' },
+                { id: 'decor', title: 'The Decor Detail', description: 'Find and photograph your favorite decorative element at the venue.' },
+                { id: 'blue', title: 'Something Blue', description: 'Snap a picture of something blue you spot at the wedding.' },
+                { id: 'foodie', title: 'The Foodie Shot', description: 'Take an artistic photo of your meal or a delicious-looking appetizer.' },
+                { id: 'dancing', title: 'Footloose Fun', description: 'Capture a photo of someone (or a group) dancing.' },
+                { id: 'outfit', title: 'The Outfit Spot', description: 'Find someone with a particularly stylish or unique outfit and take a photo (with their permission).' },
+                { id: 'love', title: 'Love is in the Air', description: 'Capture a moment that you think represents love.' }
+            ],
+            creative: [
+                { id: 'perspective', title: '"Through My Eyes"', description: 'Take a photo of what you see from your current perspective.' },
+                { id: 'blackWhite', title: 'The Black & White Moment', description: 'Capture a scene in black and white (use your phone\'s filter).' },
+                { id: 'candid', title: 'Candid Capture', description: 'Take a photo of someone when they\'re not posing or looking at the camera.' },
+                { id: 'goldenHour', title: '"Golden Hour" Magic', description: 'If the timing is right, capture a photo during the beautiful light of golden hour.' },
+                { id: 'venueVibe', title: 'The Venue Vibe', description: 'Take a photo that you think best captures the overall atmosphere of the wedding.' }
+            ],
+            interactive: [
+                { id: 'findThe', title: '"Find the..." Challenge', description: 'Find someone wearing something gold, holding a wedding favor, or with a flower accessory and take a photo with them.' },
+                { id: 'guessWho', title: '"Guess Who?" Photo', description: 'Take a close-up photo of something wedding-related, and see if others can guess what it is.' },
+                { id: 'photoBoothFun', title: '"Photo Booth Fun"', description: 'Take the silliest photo you can in the photo booth and share it.' },
+                { id: 'captionThis', title: '"Caption This!" Challenge', description: 'Post a photo from the wedding and ask other guests to provide funny or creative captions.' },
+                { id: 'storyPhotos', title: '"Story in Three Photos"', description: 'Tell a little "story" of your experience at the wedding using three connected photos.' }
+            ],
+            bonus: [
+                { id: 'riddle1', title: 'Wedding Riddle #1', description: 'Solve this riddle: "Something old, something new, find where the couple first said I do to you."', isLocked: true },
+                { id: 'riddle2', title: 'Wedding Riddle #2', description: 'Find the hidden heart near where sweet things are served.', isLocked: true },
+                { id: 'specialPhoto', title: 'Special Moment', description: 'Capture a photo of the couple\'s first dance from an interesting angle.', isLocked: true },
+                { id: 'secretMessage', title: 'Secret Message', description: 'Find the hidden message under one of the centerpieces at the head table.', isLocked: true },
+                { id: 'finalChallenge', title: 'Final Challenge', description: 'Combine all clues from the QR codes to unlock the final wedding message!', isLocked: true }
+            ]
+        };
+        let completedChallenges = 0;
+        // Calculate total challenges dynamically based on the new data
+        const totalChallenges = Object.values(huntChallenges).flat().length;
+
+
+        // --- Functions ---
+
+        // Helper function to shuffle an array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to hide loading screen and show cover page, then auto-enter
+        function showCoverPage() {
+            loadingScreen.classList.add('hide');
+            // AOS.init() is called after loading screen hides to ensure animations play correctly
+            AOS.init({
+                offset: 120, // offset (in px) from the original trigger point
+                delay: 0, // values from 0 to 3000, with step 50ms
+                duration: 1000, // values from 0 to 3000, with step 50ms
+                easing: 'ease', // default easing for AOS animations
+                once: true, // whether animation should happen only once - while scrolling down
+                mirror: false, // whether elements should animate out while scrolling past them
+                anchorPlacement: 'top-bottom', // defines which position of the element should trigger the animation
+            });
+
+            // Automatically enter the site after a few seconds
+            setTimeout(() => {
+                enterSite();
+            }, 3000); // 3 seconds delay before entering the site
+        }
+
+        // Function to handle entering the main site
+        function enterSite() {
+            coverPage.style.display = 'none';
+            mainContent.classList.add('show');
+            // Removed confetti trigger
+            // Show navigation after a short delay
+            setTimeout(() => {
+                mainNav.classList.add('show');
+            }, 500);
+        }
+
+        // Removed triggerComplexConfetti function
+        // function triggerComplexConfetti() {
+        //     console.log("Triggering complex confetti animation.");
+        //     if (typeof confetti !== 'undefined') {
+        //         const duration = 3 * 1000;
+        //         const animationEnd = Date.now() + duration;
+        //         const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 }; // Increased zIndex
+
+        //         function randomInRange(min, max) {
+        //             return Math.random() * (max - min) + min;
+        //         }
+
+        //         const interval = setInterval(function () {
+        //             const timeLeft = animationEnd - Date.now();
+
+        //             if (timeLeft <= 0) {
+        //                 return clearInterval(interval);
+        //             }
+
+        //             const particleCount = 50 * (timeLeft / duration);
+
+        //             // Left side confetti
+        //             confetti({
+        //                 ...defaults,
+        //                 particleCount,
+        //                 origin: { x: randomInRange(0.1, 0.3), y: randomInRange(0.2, 0.8) }, // Ensure y is in a valid range
+        //                 colors: ['#3b4d61', '#e0eafc', '#cfdef3', '#ffffff']
+        //             });
+
+        //             // Right side confetti
+        //             confetti({
+        //                 ...defaults,
+        //                 particleCount,
+        //                 origin: { x: randomInRange(0.7, 0.9), y: randomInRange(0.2, 0.8) }, // Ensure y is in a valid range
+        //                 colors: ['#3b4d61', '#e0eafc', '#cfdef3', '#ffffff']
+        //             });
+        //         }, 250);
+        //     }
+        // }
+
+        // Function to create bubbles (currently not called by findSeat, but available)
+        function createBubbles(targetElement) {
+            console.log("Creating bubbles animation.");
+            // Add a check to ensure targetElement is a valid DOM element
+            if (!targetElement || typeof targetElement.getBoundingClientRect !== 'function') {
+                console.error("Invalid targetElement provided to createBubbles function.");
+                return; // Exit if targetElement is not valid
+            }
+
+            const colors = ['#3b4d61', '#e0eafc', '#cfdef3', '#ffffff'];
+
+            for (let i = 0; i < 20; i++) {
+                let bubble = document.createElement("div");
+                bubble.className = "bubble";
+
+                const size = Math.random() * 20 + 10;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+                bubble.style.opacity = Math.random() * 0.5 + 0.3;
+
+                // Position bubbles relative to the target element
+                const rect = targetElement.getBoundingClientRect();
+                const startX = rect.left + Math.random() * rect.width;
+                const startY = rect.top + rect.height;
+
+                bubble.style.left = `${startX}px`;
+                bubble.style.top = `${startY}px`;
+
+                // Set a random X translation for the bubble animation
+                bubble.style.setProperty('--random-x', Math.random() * 2 - 1); // -1 to 1 for left/right drift
+
+                document.body.appendChild(bubble);
+
+                setTimeout(() => {
+                    if (bubble.parentNode) {
+                        bubble.remove();
+                    }
+                }, 3000);
+            }
+        }
+
+        // Define a mapping for table names to placeholder image URLs
+        const tableImageMap = {
+            "Amethyst": "Amethyst.png",
+            "Citrine": "Citrine.png",
+            "Diamond": "Diamond.png",
+            "Emerald": "Emerald.png",
+            "Garnet": "Garnet.png",
+            "Kunzite": "Kunzite.png",
+            "Moonstone": "Moonstone.png",
+            "Opal": "Opal.png",
+            "Pearl": "Pearl.png",
+            "Ruby": "Ruby.png",
+            "Sapphire": "Sapphire.png",
+            "Topaz": "Topaz.png",
+            "Carnelian": "Carnelian.png"
+            // "B&G Table": "RoseQuartz.jpeg"
+        };
+
+        // Function to find a guest's seat - MODIFIED FOR POPUP CARD VIEW WITH IMAGE
+        function findSeat() {
+            const firstName = txtFirstName.value.trim().toLowerCase();
+            const lastName = txtLastName.value.trim().toLowerCase();
+
+            if (!firstName && !lastName) {
+                showMessage("Input Required", "Please enter at least a first name or last name to search.");
+                return;
+            }
+
+            let foundGuest = null;
+            for (const guest of guestList) {
+                const guestFirstName = guest.firstName.toLowerCase();
+                const guestLastName = guest.lastName.toLowerCase();
+
+                const firstNameMatch = firstName === '' || guestFirstName.includes(firstName);
+                const lastNameMatch = lastName === '' || guestLastName.includes(lastName);
+
+                if (firstNameMatch && lastNameMatch) {
+                    foundGuest = guest;
+                    break;
+                }
+            }
+
+            if (foundGuest) {
+                const imageUrl = tableImageMap[foundGuest.table] || "https://placehold.co/100x100/CCCCCC/ffffff?text=Table";
+                const cardContent = `
+                    <div class="card-content">
+                        <img src="${imageUrl}" alt="${foundGuest.table} Table" class="table-image-popup" />
+                        <h4>${foundGuest.firstName} ${foundGuest.lastName}</h4>
+                        <p>Your table is: <strong>${foundGuest.table}</strong></p>
+                    </div>
+                `;
+                showMessage("Guest Found!", cardContent);
+                // Removed confetti trigger
+            } else {
+                showMessage("Guest Not Found", "Please check your spelling or try again. The guest you are looking for was not found in our records.");
+            }
+        }
+
+        // Function to clear search fields and results
+        function clearSearch() {
+            txtFirstName.value = '';
+            txtLastName.value = '';
+        }
+
+        // Function to open timeline modal - UPDATED TO ACCEPT 3 ARGUMENTS
+        function openTimelineModal(title, shortDescription, longDescription) {
+            modalTitle.textContent = title;
+            // Display both short and long descriptions in the modal content
+            modalContent.innerHTML = `<p>${shortDescription}</p><p>${longDescription}</p>`;
+            timelineModal.style.display = 'flex';
+        }
+
+        // Function to close timeline modal
+        function closeTimelineModal() {
+            timelineModal.style.display = 'none';
+        }
+
+        // --- Love Story Carousel Functions (REMOVED) ---
+        // function showSlide(index) {
+        //     const slides = document.querySelectorAll('.carousel-slide');
+        //     if (index >= slides.length) {
+        //         currentSlideIndex = 0;
+        //     } else if (index < 0) {
+        //         currentSlideIndex = slides.length - 1;
+        //     } else {
+        //         currentSlideIndex = index;
+        //     }
+        //     carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        //     updateCarouselNavigation();
+        // }
+
+        // function nextSlide() {
+        //     showSlide(currentSlideIndex + 1);
+        // }
+
+        // function prevSlide() {
+        //     showSlide(currentSlideIndex - 1);
+        // }
+
+        // function updateCarouselNavigation() {
+        //     const slides = document.querySelectorAll('.carousel-slide');
+        //     prevSlideBtn.disabled = currentSlideIndex === 0;
+        //     nextSlideBtn.disabled = currentSlideIndex === slides.length - 1;
+        // }
+
+        // // Handle swipe for carousel
+        // let touchStartX = 0;
+        // let touchEndX = 0;
+
+        // carouselSlides.addEventListener('touchstart', (e) => {
+        //     touchStartX = e.touches[0].clientX;
+        // });
+
+        // carouselSlides.addEventListener('touchend', (e) => {
+        //     touchEndX = e.changedTouches[0].clientX;
+        //     handleSwipe();
+        // });
+
+        // function handleSwipe() {
+        //     if (touchEndX < touchStartX - 50) { // Swiped left
+        //         nextSlide();
+        //     }
+        //     if (touchEndX > touchStartX + 50) { // Swiped right
+        //         prevSlide();
+        //     }
+        // }
+
+
+        // --- New Seating Chart Functions ---
+
+        // Function to group guests by table
+        function groupGuestsByTable() {
+            const tables = {};
+            guestList.forEach(guest => {
+                if (!tables[guest.table]) {
+                    tables[guest.table] = [];
+                }
+                tables[guest.table].push(guest);
+            });
+            return tables;
+        }
+
+        // Function to generate table cards dynamically
+        function generateTableCards() {
+            const groupedGuests = groupGuestsByTable();
+            tableGallery.innerHTML = ''; // Clear existing cards
+
+            for (const tableName in groupedGuests) {
+                const tableCard = document.createElement('div');
+                tableCard.classList.add('table-card');
+                tableCard.classList.add('show'); // Initially show all
+                tableCard.dataset.table = tableName; // Store table name for filtering
+
+                // Use the image URL from the map, or a generic placeholder if not found
+                const imageUrl = tableImageMap[tableName] || "https://placehold.co/100x100/CCCCCC/ffffff?text=Table";
+
+                tableCard.innerHTML = `
+                    <img src="${imageUrl}" alt="${tableName} Table" class="table-image" />
+                    <h3>${tableName}</h3>
+                    <ul>
+                        ${groupedGuests[tableName].map(guest => `<li>${guest.firstName} ${guest.lastName}</li>`).join('')}
+                    </ul>
+                `;
+                tableGallery.appendChild(tableCard);
+            }
+            console.log("Table gallery content after generation:", tableGallery.innerHTML); // Debugging line
+        }
+
+        // Function to filter table cards
+        function filterTables(filterValue) {
+            const allTableCards = document.querySelectorAll('.table-card');
+            let foundTables = false;
+            allTableCards.forEach(card => {
+                if (filterValue === 'all' || card.dataset.table === filterValue) {
+                    card.style.display = 'block'; // Show matching cards
+                    if (filterValue !== 'all') { // Only trigger confetti if a specific table is selected
+                        foundTables = true;
+                    }
+                } else {
+                    card.style.display = 'none'; // Hide non-matching cards
+                }
+            });
+
+            if (foundTables) {
+                console.log('Triggering confetti on table filter'); // Added log
+                // Removed confetti trigger
+            }
+        }
+
+        // --- Menu Card Functions ---
+        function flipMenuCard() {
+            const menuCard = document.getElementById('menuCard');
+            menuCard.classList.toggle('flipped');
+        }
+
+        function filterMenu(category) {
+            const menuSections = document.querySelectorAll('.menu-section');
+            menuSections.forEach(section => {
+                if (section.classList.contains(category)) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+
+            // Update active state of tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.tab-button[onclick="filterMenu('${category}')"]`).classList.add('active');
+        }
+
+        // --- Game Logic ---
+
+        // Function to show selected game container
+        function showGame(gameId) {
+            const gameContainers = [scrambleGameContainer, searchGameContainer, memoryGameContainer, huntGameContainer];
+            gameContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+            document.getElementById(gameId).style.display = 'block';
+
+            // Special initialization for Word Search when its container is shown
+            if (gameId === 'searchGameContainer') {
+                // Only start the game if it's not already running or needs to be reset
+                if (!searchTimerInterval) { // Check if timer is not already running
+                    startWordSearchGame();
+                }
+            }
+        }
+
+        // Word Scramble Game Functions
+        function shuffleWord(word) {
+            return word.split('').sort(() => 0.5 - Math.random()).join('');
+        }
+
+        function loadNewScrambleWord() {
+            if (currentScrambleWordIndex < scrambleWords.length) {
+                currentScrambleWord = scrambleWords[currentScrambleWordIndex].toUpperCase();
+                scrambledWordDisplay.textContent = shuffleWord(currentScrambleWord);
+                userGuessInput.value = '';
+                scrambleResultDisplay.textContent = '';
+                submitGuessBtn.disabled = false;
+                nextWordBtn.disabled = true;
+                currentScrambleWordIndex++;
+            } else {
+                endScrambleGame();
+                showMessage("Game Over!", `You've completed all words. Your final score is: ${scrambleScore}`);
+            }
+        }
+
+        function startScrambleGame() {
+            if (scrambleGameStarted) return;
+            scrambleGameStarted = true;
+            scrambleScore = 0;
+            scrambleTimeLeft = 60;
+            currentScrambleWordIndex = 0;
+            scrambleScoreDisplay.textContent = `Score: ${scrambleScore}`;
+            scrambleTimerDisplay.textContent = `Time: ${scrambleTimeLeft}`;
+            startScrambleGameBtn.style.display = 'none';
+            endScrambleGameBtn.style.display = 'inline-block';
+            loadNewScrambleWord();
+            scrambleTimerInterval = setInterval(updateScrambleTimer, 1000);
+            scrambleLeaderboard.style.display = 'none'; // Hide leaderboard when game starts
+        }
+
+        function updateScrambleTimer() {
+            scrambleTimeLeft--;
+            scrambleTimerDisplay.textContent = `Time: ${scrambleTimeLeft}`;
+            if (scrambleTimeLeft <= 0) {
+                endScrambleGame();
+                showMessage("Time's Up!", `Your final score is: ${scrambleScore}`);
+            }
+        }
+
+        function submitScrambleGuess() {
+            if (!scrambleGameStarted) return;
+            const guess = userGuessInput.value.trim().toUpperCase();
+            if (guess === currentScrambleWord) {
+                scrambleResultDisplay.textContent = 'Correct!';
+                scrambleResultDisplay.style.color = 'green';
+                scrambleScore += 10;
+                scrambleScoreDisplay.textContent = `Score: ${scrambleScore}`;
+                submitGuessBtn.disabled = true;
+                nextWordBtn.disabled = false;
+            } else {
+                scrambleResultDisplay.textContent = `Incorrect. The word was: ${currentScrambleWord}`;
+                scrambleResultDisplay.style.color = 'red';
+                scrambleScore = Math.max(0, scrambleScore - 5); // Deduct points, but not below 0
+                scrambleScoreDisplay.textContent = `Score: ${scrambleScore}`;
+                submitGuessBtn.disabled = true;
+                nextWordBtn.disabled = false;
+            }
+        }
+
+        function endScrambleGame() {
+            clearInterval(scrambleTimerInterval);
+            scrambleGameStarted = false;
+            startScrambleGameBtn.style.display = 'inline-block';
+            endScrambleGameBtn.style.display = 'none';
+            submitGuessBtn.disabled = true;
+            nextWordBtn.disabled = true;
+            scrambledWordDisplay.textContent = '';
+            userGuessInput.value = '';
+            scrambleResultDisplay.textContent = '';
+
+            const playerName = prompt(`Game Over! Your score is ${scrambleScore}. Enter your name for the leaderboard:`);
+            if (playerName) {
+                saveScrambleScore(playerName, scrambleScore);
+                loadScrambleLeaderboard();
+                scrambleLeaderboard.style.display = 'block';
+            }
+        }
+
+        function saveScrambleScore(name, score) {
+            let leaderboard = JSON.parse(localStorage.getItem('scrambleLeaderboard')) || [];
+            leaderboard.push({ name, score });
+            leaderboard.sort((a, b) => b.score - a.score); // Sort descending
+            leaderboard = leaderboard.slice(0, 10); // Keep top 10
+            localStorage.setItem('scrambleLeaderboard', JSON.stringify(leaderboard));
+        }
+
+        function loadScrambleLeaderboard() {
+            let leaderboard = JSON.parse(localStorage.getItem('scrambleLeaderboard')) || [];
+            scrambleLeaderboardBody.innerHTML = '';
+            if (leaderboard.length === 0) {
+                scrambleLeaderboardBody.innerHTML = '<tr><td colspan="3">No scores yet.</td></tr>';
+                return;
+            }
+            leaderboard.forEach((entry, index) => {
+                const row = scrambleLeaderboardBody.insertRow();
+                row.insertCell(0).textContent = index + 1;
+                row.insertCell(1).textContent = entry.name;
+                row.insertCell(2).textContent = entry.score;
+            });
+        }
+
+        function clearScrambleLeaderboard() {
+            if (confirm("Are you sure you want to clear the leaderboard?")) {
+                localStorage.removeItem('scrambleLeaderboard');
+                loadScrambleLeaderboard();
+                showMessage("Leaderboard Cleared", "The Word Scramble leaderboard has been reset.");
+            }
+        }
+
+        // Word Search Game Functions
+        /**
+         * Attempts to place a word into the grid at a given starting position and direction.
+         * Checks for bounds and conflicts with existing letters.
+         * @param {string} word - The word to place.
+         * @param {Array<number>} allowedDirections - Array of allowed direction indices (0-5).
+         * @param {number} startRow - The starting row.
+         * @param {number} startCol - The starting column.
+         * @param {Array<Array<string>>} currentGridLetters - The 2D array representing the grid letters.
+         * @param {number} gridRows - Number of rows in the grid.
+         * @param {number} gridCols - Number of columns in the grid.
+         * @returns {{success: boolean, cells?: Array<{r: number, c: number, char: string}>}} Success status and cells if placed.
+         */
+        function tryPlaceWord(word, allowedDirections, startRow, startCol, currentGridLetters, gridRows, gridCols) {
+            const len = word.length;
+            const directionsMap = [
+                { dr: 0, dc: 1 },  // 0: Horizontal (left to right)
+                { dr: 1, dc: 0 },  // 1: Vertical (top to bottom)
+                { dr: 1, dc: 1 },  // 2: Diagonal (down-right)
+                { dr: -1, dc: 1 }, // 3: Diagonal (up-right)
+                { dr: 0, dc: -1 }, // 4: Horizontal (right to left)
+                { dr: -1, dc: 0 }  // 5: Vertical (bottom to top)
+            ];
+
+            // Filter directions based on allowedDirections for the current word/difficulty
+            const possibleDirections = allowedDirections.filter((dirIndex) => directionsMap[dirIndex]);
+            if (possibleDirections.length === 0) return { success: false }; // No valid directions to try
+
+            // Shuffle possible directions to add randomness
+            shuffleArray(possibleDirections);
+
+            for (const dirIndex of possibleDirections) {
+                const { dr, dc } = directionsMap[dirIndex];
+                let cellsToPlace = [];
+                let isValidPlacement = true;
+
+                for (let i = 0; i < len; i++) {
+                    const r = startRow + i * dr;
+                    const c = startCol + i * dc;
+
+                    // Check bounds
+                    if (r < 0 || r >= gridRows || c < 0 || c >= gridCols) {
+                        isValidPlacement = false;
+                        break;
+                    }
+                    // Check for conflicts with existing letters
+                    if (currentGridLetters[r][c] !== '' && currentGridLetters[r][c] !== word[i]) {
+                        isValidPlacement = false;
+                        break;
+                    }
+                    cellsToPlace.push({ r, c, char: word[i] });
+                }
+
+                if (isValidPlacement) {
+                    // This is a valid path, return success and the cells to be placed
+                    return { success: true, cells: cellsToPlace };
+                }
+            }
+            return { success: false }; // Could not place the word in any allowed direction from this start point
+        }
+
+        /**
+         * Filters the master word list based on the current difficulty setting.
+         * @param {string} difficulty - 'easy', 'medium', or 'hard'.
+         * @returns {Array<Object>} An array of word data objects suitable for the given difficulty.
+         */
+        function getWordsForDifficulty(difficulty) {
+            let filteredWords = [];
+            allWordSearchWordsData.forEach(wordData => {
+                if (
+                    (difficulty === 'easy' && wordData.min_difficulty === 'easy') ||
+                    (difficulty === 'medium' && (wordData.min_difficulty === 'easy' || wordData.min_difficulty === 'medium')) ||
+                    (difficulty === 'hard')
+                ) {
+                    filteredWords.push(wordData);
+                }
+            });
+            return filteredWords;
+        }
+
+        function createWordSearchGrid() {
+            gridContainer.innerHTML = '';
+            gridLetters = Array(gridRows).fill(null).map(() => Array(gridCols).fill(''));
+            gridCellElements = Array(gridRows).fill(null).map(() => Array(gridCols).fill(null)); // Initialize DOM element references
+            foundWords.clear();
+            wordsListElement.innerHTML = '';
+            searchTimeElapsed = 0;
+            wordSearchTimerDisplay.textContent = `Time: ${searchTimeElapsed}`;
+            searchResultDisplay.textContent = '';
+            hintResultDisplay.textContent = ''; // Clear hint message
+
+            const wordsToAttemptToPlace = getWordsForDifficulty(currentWordSearchDifficulty);
+            shuffleArray(wordsToAttemptToPlace); // Randomize the order of words to try placing
+
+            wordsInGrid = []; // Reset wordsInGrid for new game
+
+            for (const wordData of wordsToAttemptToPlace) {
+                const word = wordData.word;
+                const allowedDirections = wordData.allowed_directions; // Use allowed_directions from wordData
+                let wordPlaced = false;
+                let attempts = 0;
+                const maxAttempts = gridRows * gridCols * 5; // Limit attempts to prevent infinite loops
+
+                while (!wordPlaced && attempts < maxAttempts) {
+                    const startRow = Math.floor(Math.random() * gridRows);
+                    const startCol = Math.floor(Math.random() * gridCols);
+
+                    // Create a temporary grid copy for each attempt to avoid partial placements affecting subsequent attempts
+                    let tempGridLetters = Array(gridRows).fill(null).map((_, r) => Array(gridCols).fill(null).map((_, c) => gridLetters[r][c]));
+
+                    const placementResult = tryPlaceWord(word, allowedDirections, startRow, startCol, tempGridLetters, gridRows, gridCols);
+
+                    if (placementResult.success) {
+                        // Commit the placement to the main gridLetters
+                        placementResult.cells.forEach(cell => {
+                            gridLetters[cell.r][cell.c] = cell.char;
+                        });
+                        wordPlaced = true;
+                        wordsInGrid.push({ word: word, cells: placementResult.cells }); // Store word and its coordinates
+                    }
+                    attempts++;
+                }
+                if (!wordPlaced) {
+                    console.warn(`Failed to place word: ${word} after ${maxAttempts} attempts.`);
+                }
+            }
+
+            // Update totalWordsCountElement based on actually placed words
+            totalWordsCountElement.textContent = wordsInGrid.length;
+            wordsFoundCountElement.textContent = foundWords.size; // Reset found count
+
+            // Fill empty cells with random letters
+            for (let r = 0; r < gridRows; r++) {
+                for (let c = 0; c < gridCols; c++) {
+                    if (gridLetters[r][c] === '') {
+                        gridLetters[r][c] = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Random uppercase letter
+                    }
+                }
+            }
+
+            // Render grid
+            gridContainer.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
+            for (let r = 0; r < gridRows; r++) {
+                for (let c = 0; c < gridCols; c++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('grid-cell');
+                    cell.dataset.row = r;
+                    cell.dataset.col = c;
+                    cell.innerHTML = `<span>${gridLetters[r][c]}</span>`;
+
+                    cell.addEventListener('mousedown', handleMouseDown);
+                    cell.addEventListener('mouseover', handleMouseOver);
+                    cell.addEventListener('mouseup', handleMouseUp);
+                    cell.addEventListener('touchstart', handleMouseDown);
+                    cell.addEventListener('touchmove', handleMouseOver);
+                    cell.addEventListener('touchend', handleMouseUp);
+
+                    gridContainer.appendChild(cell);
+                    gridCellElements[r][c] = cell;
+                }
+            }
+
+            // Render word list based on actually placed words
+            wordsInGrid.forEach(wordData => {
+                const li = document.createElement('li');
+                li.textContent = wordData.word;
+                li.dataset.word = wordData.word;
+                wordsListElement.appendChild(li);
+            });
+        }
+
+        function startWordSearchGame() {
+            if (searchTimerInterval) clearInterval(searchTimerInterval); // Clear any existing timer
+            createWordSearchGrid(); // Create/reset grid
+            searchTimeElapsed = 0;
+            wordSearchTimerDisplay.textContent = `Time: ${searchTimeElapsed}`;
+            searchTimerInterval = setInterval(() => {
+                searchTimeElapsed++;
+                wordSearchTimerDisplay.textContent = `Time: ${searchTimeElapsed}`;
+            }, 1000);
+            startSearchGameBtn.style.display = 'none';
+            endSearchGameBtn.style.display = 'inline-block';
+            resetSearchGameBtn.style.display = 'inline-block';
+            getHintBtn.style.display = 'inline-block'; // Show hint button
+        }
+
+        function endWordSearchGame() {
+            clearInterval(searchTimerInterval); // Stop the timer
+            searchTimerInterval = null; // Reset interval ID
+            clearHighlights(); // Clear any active highlights
+            foundWords.clear(); // Reset found words
+            wordsFoundCountElement.textContent = 0; // Reset display
+            totalWordsCountElement.textContent = 0; // Reset display
+            wordSearchTimerDisplay.textContent = `Time: 0`; // Reset timer display
+
+            // Hide the Word Search game container
+            searchGameContainer.style.display = 'none';
+            // Show the main game selection container (Word Scramble in this case)
+            scrambleGameContainer.style.display = 'block';
+
+            // Reset visibility of Word Search specific buttons for next time
+            startSearchGameBtn.style.display = 'inline-block';
+            endSearchGameBtn.style.display = 'none';
+            resetSearchGameBtn.style.display = 'none';
+            getHintBtn.style.display = 'none'; // Hide hint button
+            hintResultDisplay.textContent = ''; // Clear any hint message
+        }
+
+        function resetWordSearchGame() {
+            clearInterval(searchTimerInterval); // Stop current timer
+            createWordSearchGrid(); // Generate a new grid and reset found words/counts
+            searchTimeElapsed = 0; // Reset time
+            wordSearchTimerDisplay.textContent = `Time: ${searchTimeElapsed}`; // Update display
+            searchTimerInterval = setInterval(() => { // Start new timer
+                searchTimeElapsed++;
+                wordSearchTimerDisplay.textContent = `Time: ${searchTimeElapsed}`;
+            }, 1000);
+            // Ensure buttons are in the correct state for a running game
+            startSearchGameBtn.style.display = 'none';
+            endSearchGameBtn.style.display = 'inline-block';
+            resetSearchGameBtn.style.display = 'inline-block';
+            getHintBtn.style.display = 'inline-block';
+            hintResultDisplay.textContent = ''; // Clear any hint message
+        }
+
+        /**
+         * Provides a hint for an unfound word by highlighting its first letter.
+         */
+        function getHint() {
+            const unfoundWords = wordsInGrid.filter(wordData => !foundWords.has(wordData.word));
+
+            if (unfoundWords.length === 0) {
+                hintResultDisplay.textContent = "No more hints available! You've found all the words.";
+                return;
+            }
+
+            // Get a random unfound word
+            const hintWordData = unfoundWords[Math.floor(Math.random() * unfoundWords.length)];
+            const firstCell = hintWordData.cells[0]; // Get the first cell of the word
+
+            const hintedElement = gridCellElements[firstCell.r][firstCell.c];
+            hintedElement.classList.add('hint-highlight');
+            hintResultDisplay.textContent = `Hint for: ${hintWordData.word}`;
+
+            // Disable hint button temporarily
+            getHintBtn.disabled = true;
+            setTimeout(() => {
+                hintedElement.classList.remove('hint-highlight');
+                hintResultDisplay.textContent = '';
+                getHintBtn.disabled = false;
+            }, 2000); // Highlight for 2 seconds
+        }
+
+        /**
+         * Handles the mouse down or touch start event on a grid cell.
+         * @param {Event} event - The mouse or touch event.
+         */
+        function handleMouseDown(event) {
+            isDragging = true;
+            const target = event.type.startsWith('touch') ? document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY) : event.currentTarget;
+
+            if (!target || !target.classList.contains('grid-cell')) return;
+
+            startCell = {
+                row: parseInt(target.dataset.row),
+                col: parseInt(target.dataset.col)
+            };
+            // Clear any previous highlights
+            clearHighlights();
+            currentHighlightedCells.push(target);
+            target.classList.add('highlighted');
+            event.preventDefault(); // Prevent default touch behavior (scrolling, etc.)
+        }
+
+        /**
+         * Handles the mouse over or touch move event on a grid cell.
+         * @param {Event} event - The mouse or touch event.
+         */
+        function handleMouseOver(event) {
+            if (!isDragging) return;
+
+            const target = event.type.startsWith('touch') ? document.elementFromPoint(event.touches[0].clientX, event.touches[0].clientY) : event.currentTarget;
+
+            if (!target || !target.classList.contains('grid-cell')) return;
+
+            const endCell = {
+                row: parseInt(target.dataset.row),
+                col: parseInt(target.dataset.col)
+            };
+
+            // Get cells in the current selection path
+            const pathCells = getCellsInPath(startCell, endCell);
+
+            // Clear previous highlight and apply new one
+            clearHighlights();
+            currentHighlightedCells = pathCells.map(coord => gridCellElements[coord.row][coord.col]);
+            currentHighlightedCells.forEach(c => c.classList.add('highlighted'));
+            event.preventDefault(); // Prevent default touch behavior
+        }
+
+        /**
+         * Handles the mouse up or touch end event (anywhere on the document).
+         * @param {Event} event - The mouse or touch event.
+         */
+        function handleMouseUp(event) {
+            if (!isDragging) return;
+
+            isDragging = false;
+            const target = event.type.startsWith('touch') ? document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY) : event.target;
+
+            // IMPORTANT: Add a null/undefined check for target BEFORE accessing its properties
+            if (!target || !target.dataset || isNaN(parseInt(target.dataset.row)) || isNaN(parseInt(target.dataset.col))) {
+                clearHighlights();
+                startCell = null;
+                return; // Exit if target is not a valid grid cell
+            }
+
+            const endCell = {
+                row: parseInt(target.dataset.row),
+                col: parseInt(target.dataset.col)
+            };
+
+            // Ensure startCell is valid (can be null if click started outside a cell)
+            if (!startCell || isNaN(endCell.row) || isNaN(endCell.col)) {
+                clearHighlights();
+                startCell = null;
+                return;
+            }
+
+            // Extract the word from the selection
+            const extractedWord = getWordFromSelection(startCell, endCell);
+
+            // Check if the extracted word (or its reverse) is a valid word to find
+            const normalizedExtractedWord = extractedWord.toUpperCase();
+            const reversedExtractedWord = normalizedExtractedWord.split('').reverse().join('');
+
+            // Get the list of words that were actually placed in the grid
+            const placedWordStrings = wordsInGrid.map(wd => wd.word);
+
+            let foundMatch = null;
+            for (const targetWord of placedWordStrings) { // Check against actually placed words
+                if (targetWord === normalizedExtractedWord || targetWord === reversedExtractedWord) {
+                    foundMatch = targetWord;
+                    break;
+                }
+            }
+
+            if (foundMatch && !foundWords.has(foundMatch)) {
+                // Word found!
+                foundWords.add(foundMatch);
+                updateWordsFoundCount();
+                markWordAsFoundOnGrid(startCell, endCell);
+                markWordAsFoundInList(foundMatch);
+                // Removed confetti trigger
+                checkWinCondition();
+            } else {
+                // Not a valid word or already found, clear highlight
+                clearHighlights();
+            }
+
+            startCell = null; // Reset start cell
+            event.preventDefault(); // Prevent default touch behavior
+        }
+
+        /**
+         * Clears all temporary highlights from the grid.
+         */
+        function clearHighlights() {
+            currentHighlightedCells.forEach(cell => cell.classList.remove('highlighted'));
+            currentHighlightedCells = [];
+        }
+
+        /**
+         * Gets all cell coordinates in a straight line path between two points.
+         * Accounts for horizontal, vertical, and diagonal lines.
+         * @param {{row: number, col: number}} start - The starting cell coordinates.
+         * @param {{row: number, col: number}} end - The ending cell coordinates.
+         * @returns {Array<{row: number, col: number}>} An array of cell coordinates in the path.
+         */
+        function getCellsInPath(start, end) {
+            const path = [];
+            const dRow = end.row - start.row;
+            const dCol = end.col - start.col;
+
+            const absDR = Math.abs(dRow);
+            const absDC = Math.abs(dCol);
+
+            // Check if it's a straight line (horizontal, vertical, or diagonal)
+            if (dRow !== 0 && dCol !== 0 && absDR !== absDC) {
+                return []; // Not a straight line
+            }
+
+            const length = Math.max(absDR, absDC);
+            if (length === 0) { // Same cell
+                path.push(start);
+                return path;
+            }
+
+            const stepRow = dRow / length;
+            const stepCol = dCol / length;
+
+            for (let i = 0; i <= length; i++) {
+                path.push({
+                    row: start.row + i * stepRow,
+                    col: start.col + i * stepCol
+                });
+            }
+            return path;
+        }
+
+        /**
+         * Extracts the word from the grid based on the start and end cell coordinates.
+         * @param {{row: number, col: number}} start - The starting cell coordinates.
+         * @param {{row: number, col: number}} end - The ending cell coordinates.
+         * @returns {string} The extracted word.
+         */
+        function getWordFromSelection(start, end) {
+            const pathCells = getCellsInPath(start, end);
+            let word = '';
+            for (const cell of pathCells) {
+                word += gridLetters[cell.row][cell.col]; // Get letter from the generated grid data
+            }
+            return word;
+        }
+
+        /**
+         * Marks a found word on the grid by adding the 'found' class to its cells.
+         * @param {{row: number, col: number}} start - The starting cell coordinates of the found word.
+         * @param {{row: number, col: number}} end - The ending cell coordinates of the found word.
+         */
+        function markWordAsFoundOnGrid(start, end) {
+            const pathCells = getCellsInPath(start, end);
+            pathCells.forEach(coord => {
+                const cellElement = gridCellElements[coord.row][coord.col]; // Use stored DOM element references
+                if (cellElement) {
+                    cellElement.classList.remove('highlighted'); // Remove temporary highlight
+                    cellElement.classList.add('found'); // Add permanent found highlight
+                }
+            });
+        }
+
+        /**
+         * Marks a found word in the words list by adding the 'found' class.
+         * @param {string} word - The word that was found.
+         */
+        function markWordAsFoundInList(word) {
+            const listItem = wordsListElement.querySelector(`li[data-word="${word}"]`);
+            if (listItem) {
+                listItem.classList.add('found');
+            }
+        }
+
+        /**
+         * Updates the count of found words displayed on the page.
+         */
+        function updateWordsFoundCount() {
+            wordsFoundCountElement.textContent = foundWords.size;
+        }
+
+        /**
+         * Checks if all words have been found and displays a win message.
+         * Modified to allow returning to game selection.
+         */
+        function checkWinCondition() {
+            if (foundWords.size === parseInt(totalWordsCountElement.textContent)) { // Use the displayed total words
+                clearInterval(searchTimerInterval); // Stop timer on win
+                setTimeout(() => {
+                    // Using a custom modal instead of alert()
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50';
+                    modal.innerHTML = `
+                        <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm mx-auto transform transition-all duration-300 scale-95 opacity-0" id="winModalContent">
+                            <h3 class="text-3xl font-bold text-green-700 mb-4">Congratulations!</h3>
+                            <p class="text-xl text-gray-700 mb-6">You found all the words!</p>
+                            <button id="closeModalBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
+                                Back to Games
+                            </button>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+
+                    setTimeout(() => {
+                        document.getElementById('winModalContent').classList.remove('scale-95', 'opacity-0');
+                        document.getElementById('winModalContent').classList.add('scale-100', 'opacity-100');
+                    }, 50);
+
+                    document.getElementById('closeModalBtn').addEventListener('click', () => {
+                        modal.remove();
+                        // Reset Word Search game state and navigate back to the game selection screen
+                        endWordSearchGame();
+                    });
+                }, 300);
+            }
+        }
+
+        // Memory Match Game Functions
+        function createMemoryGame() {
+            memoryGameGrid.innerHTML = '';
+            memoryCards = [];
+            flippedCards = [];
+            matchedPairs = 0;
+            memoryMoves = 0;
+            memoryTimeElapsed = 0;
+            canFlip = true;
+
+            memoryMovesDisplay.textContent = `Moves: ${memoryMoves}`;
+            memoryMatchesDisplay.textContent = `Matches: ${matchedPairs}/${memoryEmojis.length}`;
+            memoryTimerDisplay.textContent = `Time: ${memoryTimeElapsed}`;
+            memoryResultDisplay.textContent = '';
+
+            const gamePairs = [...memoryEmojis, ...memoryEmojis]; // Create pairs
+            const shuffledPairs = shuffleArray(gamePairs);
+
+            shuffledPairs.forEach((emoji, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.classList.add('memory-card');
+                cardElement.dataset.emoji = emoji;
+                cardElement.dataset.index = index;
+
+                cardElement.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-front">?</div>
+                        <div class="card-back">${emoji}</div>
+                    </div>
+                `;
+
+                cardElement.addEventListener('click', () => flipMemoryCard(cardElement));
+                memoryGameGrid.appendChild(cardElement);
+            });
+        }
+
+        function flipMemoryCard(card) {
+            if (!canFlip || flippedCards.length === 2 || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+
+            card.classList.add('flipped');
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                memoryMoves++;
+                memoryMovesDisplay.textContent = `Moves: ${memoryMoves}`;
+                canFlip = false;
+                setTimeout(checkForMemoryMatch, 1000);
+            }
+        }
+
+        function checkForMemoryMatch() {
+            const [card1, card2] = flippedCards;
+            const isMatch = card1.dataset.emoji === card2.dataset.emoji;
+
+            if (isMatch) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                memoryMatchesDisplay.textContent = `Matches: ${matchedPairs}/${memoryEmojis.length}`;
+                memoryResultDisplay.textContent = 'Match!';
+                memoryResultDisplay.style.color = 'green';
+                // Removed confetti trigger
+
+                if (matchedPairs === memoryEmojis.length) {
+                    clearInterval(memoryTimerInterval);
+                    showMessage("Congratulations!", `You matched all pairs in ${memoryMoves} moves and ${memoryTimeElapsed} seconds!`);
+                    startMemoryGameBtn.style.display = 'inline-block';
+                    resetMemoryGameBtn.style.display = 'none';
+                }
+            } else {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+                memoryResultDisplay.textContent = 'No Match.';
+                memoryResultDisplay.style.color = 'red';
+            }
+
+            flippedCards = [];
+            canFlip = true;
+        }
+
+        function startMemoryGame() {
+            if (memoryTimerInterval) clearInterval(memoryTimerInterval);
+            createMemoryGame();
+            memoryTimeElapsed = 0;
+            memoryTimerDisplay.textContent = `Time: ${memoryTimeElapsed}`;
+            memoryTimerInterval = setInterval(() => {
+                memoryTimeElapsed++;
+                memoryTimerDisplay.textContent = `Time: ${memoryTimeElapsed}`;
+            }, 1000);
+            startMemoryGameBtn.style.display = 'none';
+            resetMemoryGameBtn.style.display = 'inline-block';
+        }
+
+        function resetMemoryGame() {
+            clearInterval(memoryTimerInterval);
+            createMemoryGame();
+            startMemoryGameBtn.style.display = 'inline-block';
+            resetMemoryGameBtn.style.display = 'none';
+        }
+
+        // Scavenger Hunt Game Functions
+        function renderHuntChallenges() {
+            simpleChallengesContainer.innerHTML = '';
+            creativeChallengesContainer.innerHTML = '';
+            interactiveChallengesContainer.innerHTML = '';
+            bonusChallengesList.innerHTML = '';
+            completedChallenges = 0;
+            huntProgressDisplay.textContent = `Progress: ${completedChallenges}/${totalChallenges} challenges completed`;
+
+            function createChallengeItem(challengeData, container) {
+                const div = document.createElement('div');
+                div.classList.add('challenge-item');
+                div.innerHTML = `
+                    <label>
+                        <input type="checkbox" id="challenge-${challengeData.id}" ${challengeData.isLocked ? 'disabled' : ''} />
+                        <span><strong>${challengeData.title}:</strong> ${challengeData.description}</span>
+                    </label>
+                `;
+                const checkbox = div.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        div.classList.add('completed');
+                        completedChallenges++;
+                    } else {
+                        div.classList.remove('completed');
+                        completedChallenges--;
+                    }
+                    huntProgressDisplay.textContent = `Progress: ${completedChallenges}/${totalChallenges} challenges completed`;
+                    if (completedChallenges === totalChallenges) {
+                        showMessage("All Challenges Complete!", "You've finished the Scavenger Hunt! Great job!");
+                    }
+                });
+                container.appendChild(div);
+            }
+
+            huntChallenges.simple.forEach(challenge => createChallengeItem(challenge, simpleChallengesContainer));
+            huntChallenges.creative.forEach(challenge => createChallengeItem(challenge, creativeChallengesContainer));
+            huntChallenges.interactive.forEach(challenge => createChallengeItem(challenge, interactiveChallengesContainer));
+            
+            // Render bonus challenges in their specific container and hide it initially if it contains locked challenges
+            huntChallenges.bonus.forEach(challenge => createChallengeItem(challenge, bonusChallengesList));
+            if (huntChallenges.bonus.some(challenge => challenge.isLocked)) {
+                document.getElementById('bonusChallenges').style.display = 'none';
+            }
+        }
+
+
+        // --- Event Listeners ---
+
+        // Hide loading screen on window load and auto-enter site
+        window.addEventListener('load', showCoverPage);
+
+        // Removed: enterSiteBtn.addEventListener('click', enterSite);
+
+        // Scroll to seating chart button
+        scrollToSeatingBtn.addEventListener('click', () => {
+            document.getElementById('seating-chart').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Seating chart search and clear buttons
+        btnSearch.addEventListener('click', findSeat);
+        btnClear.addEventListener('click', clearSearch);
+
+        // Timeline modal close events
+        timelineModalClose.addEventListener('click', closeTimelineModal);
+        timelineModal.addEventListener('click', (e) => {
+            if (e.target === timelineModal) {
+                closeTimelineModal();
+            }
+        });
+
+        // Initial display for the first book page and generate table cards
+        document.addEventListener('DOMContentLoaded', () => {
+            // Generate table cards on DOMContentLoaded
+            generateTableCards();
+            // Explicitly apply the 'all' filter on load to ensure all tables are shown
+            filterTables('all'); // ADDED THIS LINE
+
+            // Add event listeners for table filter buttons
+            tableFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tableFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+                    // Filter tables
+                    filterTables(button.dataset.filter);
+                });
+            });
+
+            // Initialize menu to adult view
+            filterMenu('adult');
+
+            // Initialize Scavenger Hunt challenges
+            renderHuntChallenges();
+        });
+
+
+        // --- Navigation Toggle for Mobile ---
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+        });
+
+        mobileNavOverlay.addEventListener('click', () => {
+            burgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+        });
+
+        // Close mobile nav when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Game Selection Event Listeners
+        scrambleGameBtn.addEventListener('click', () => showGame('scrambleGameContainer'));
+        searchGameBtn.addEventListener('click', () => showGame('searchGameContainer'));
+        memoryGameBtn.addEventListener('click', () => showGame('memoryGameContainer'));
+        huntGameBtn.addEventListener('click', () => showGame('huntGameContainer'));
+
+        // Word Scramble Event Listeners
+        startScrambleGameBtn.addEventListener('click', startScrambleGame);
+        submitGuessBtn.addEventListener('click', submitScrambleGuess);
+        nextWordBtn.addEventListener('click', loadNewScrambleWord);
+        endScrambleGameBtn.addEventListener('click', endScrambleGame);
+        clearScrambleLeaderboardBtn.addEventListener('click', clearScrambleLeaderboard);
+        userGuessInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !submitGuessBtn.disabled) {
+                submitScrambleGuess();
+            }
+        });
+
+        // Word Search Event Listeners
+        startSearchGameBtn.addEventListener('click', startSearchGame);
+        endSearchGameBtn.addEventListener('click', endWordSearchGame); // Corrected to call the modified endWordSearchGame
+        resetSearchGameBtn.addEventListener('click', resetWordSearchGame); // Corrected to call resetWordSearchGame
+        difficultySelect.addEventListener('change', (event) => {
+            currentWordSearchDifficulty = event.target.value;
+            resetWordSearchGame(); // Reset and restart game with new difficulty
+        });
+        getHintBtn.addEventListener('click', getHint);
+
+        // Memory Match Event Listeners
+        startMemoryGameBtn.addEventListener('click', startMemoryGame);
+        resetMemoryGameBtn.addEventListener('click', resetMemoryGame);
+
+        // Initial game display (show Word Scramble by default or none)
+        showGame('scrambleGameContainer'); // You can change this to 'none' or another game ID
+        loadScrambleLeaderboard(); // Load leaderboard on page load
+
+        // Add a global mouseup listener to ensure dragging ends even if released outside grid
+        document.addEventListener('mouseup', handleMouseUp);
+        document.addEventListener('touchend', handleMouseUp);
+    </script>
+</body>
+</html>
